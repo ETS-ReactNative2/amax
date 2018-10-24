@@ -69,7 +69,6 @@ class Retailers extends React.Component {
     ));
   };
   selectState = state => {
-    console.log("this is called");
     this.setState({
       page: this.state.page + 1,
       state: state
@@ -109,7 +108,6 @@ class Retailers extends React.Component {
         id="retailerswindow"
         className={this.props.open ? "retailers" : "retailers inactive"}
       >
-        {console.log(this.state)}
         <div className="container" id="retailercontainer" style={position}>
           <div id="countries">
             {this.renderCountries(this.state.data)}

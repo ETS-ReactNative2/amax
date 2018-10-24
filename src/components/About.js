@@ -6,7 +6,6 @@ class About extends React.Component {
   render() {
     return (
       <div className="about" id="about">
-        {console.log(this)}
         <div className="headers top">About</div>
         <div className="line" />
         <div className="content">
