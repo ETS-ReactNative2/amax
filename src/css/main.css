@@ -341,6 +341,7 @@ a.selectedlink {
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  margin: 0 5%;
 }
 #retailerswindow .container h2 {
   letter-spacing: 3px;
@@ -353,9 +354,6 @@ a.selectedlink {
 }
 #retailerswindow .container #countries .country h2:hover {
   opacity: 0.7;
-}
-#retailerswindow .container #countries #usa {
-  margin-right: 100px;
 }
 #retailerswindow .container #state {
   height: 100%;
@@ -376,13 +374,17 @@ a.selectedlink {
   flex-wrap: wrap;
   margin: auto;
 }
-#retailerswindow .container #state .list p {
+#retailerswindow .container #state .list .state {
   margin-bottom: 20px;
   text-align: center;
+  display: flex;
+  width: 100%;
+}
+#retailerswindow .container #state .list .state .stateName {
   cursor: pointer;
   transition: 0.2s;
 }
-#retailerswindow .container #state .list p:hover {
+#retailerswindow .container #state .list .state .stateName:hover {
   opacity: 0.7;
 }
 #retailerswindow .container #location {
@@ -428,4 +430,25 @@ a.selectedlink {
   background-position: center;
   transition: 0.3s;
   top: 5%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #999;
+  transition: 0.2s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

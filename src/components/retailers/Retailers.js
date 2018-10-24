@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/main.css";
 import axios from "axios";
+import _ from "lodash";
 
 const apibase = "http://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class Retailers extends React.Component {
@@ -27,13 +28,76 @@ class Retailers extends React.Component {
       page: this.state.page - 1
     });
   };
+  renderCountries = retailers => {
+    const countryArray = retailers.map(elem => elem.acf.country);
+    const uniqCountries = _.uniq(countryArray);
+    return uniqCountries.map(country => (
+      <div key={country} className="country">
+        <h2
+          onClick={() => {
+            this.selectCountry(country);
+          }}
+        >
+          {country}
+        </h2>
+      </div>
+    ));
+  };
+
   renderStates = retailers => {
-    return retailers
-      .filter(state => (state.acf.country = "United States"))
-      .filter((item, index, inputArray) => {
-        return inputArray.indexOf(item) === index;
-      })
-      .map(item => <p>{item.acf.store_state}</p>);
+    const country = retailers.filter(
+      data => data.acf.country === this.state.country
+    );
+    const stateArray = country.map(
+      elem =>
+        this.state.country === "United States"
+          ? elem.acf.store_state
+          : elem.acf.store_province
+    );
+    const uniqStates = _.uniq(stateArray);
+    return uniqStates.sort().map(state => (
+      <div className="state" key={state}>
+        <p
+          className="stateName"
+          onClick={() => {
+            this.selectState(state);
+          }}
+        >
+          {state}
+        </p>
+      </div>
+    ));
+  };
+  selectState = state => {
+    console.log("this is called");
+    this.setState({
+      page: this.state.page + 1,
+      state: state
+    });
+  };
+  selectCountry = country => {
+    this.setState({
+      page: this.state.page + 1,
+      country: country
+    });
+  };
+  renderLocations = data => {
+    return data
+      .filter(
+        obj =>
+          this.state.country === "United States"
+            ? obj.acf.store_state === this.state.state
+            : obj.acf.store_province === this.state.state
+      )
+      .map(obj => (
+        <li key={obj.id}>
+          <p>
+            <b>{obj.title.rendered}</b> - {obj.acf.store_address}
+            {" | "}
+            {obj.acf.store_phone_number}
+          </p>
+        </li>
+      ));
   };
 
   render() {
@@ -48,32 +112,29 @@ class Retailers extends React.Component {
         {console.log(this.state)}
         <div className="container" id="retailercontainer" style={position}>
           <div id="countries">
-            <div id="usa" className="country">
+            {this.renderCountries(this.state.data)}
+            {/* <div id="usa" className="country">
               <h2 onClick={this.nextpage}>UNITED STATES</h2>
             </div>
             <div id="canada" className="country">
               <h2>CANADA</h2>
-            </div>
+            </div> */}
           </div>
           <div id="state">
             <div className="name">
               <div className="back" onClick={this.prevpage} />
-              <h2> UNITED STATES</h2>
+              <h2>{this.state.country}</h2>
             </div>
-            <div className="list">{this.renderStates}</div>
-            {console.log(
-              this.state.data.filter(
-                state => (state.acf.country = "United States")
-              )
-            )}
+            <div className="list">{this.renderStates(this.state.data)}</div>
           </div>
           <div id="location">
             <div className="name">
               <div className="back" onClick={this.prevpage} />
-              <h2 id="selected-state">CALIFORNIA</h2>
+              <h2 id="selected-state">{this.state.state}</h2>
             </div>
             <ul className="list">
-              <li>
+              {this.renderLocations(this.state.data)}
+              {/* <li>
                 <p>
                   <b>Furniture and Mattress Warehouse</b> - 2250 E Alessandro
                   Blvd Riverside, CA 92508 (951) 656-7068
@@ -96,7 +157,7 @@ class Retailers extends React.Component {
                   <b>JEM Furniture Liquidators</b> - 2236 S Vineyard Avenue
                   Ontario, CA 91761 (909) 923-7474
                 </p>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

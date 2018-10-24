@@ -50,7 +50,8 @@ class App extends Component {
   openContact = () => {
     if (this.state.contactOpen === false) {
       this.setState({
-        contactOpen: true
+        contactOpen: true,
+        retailersOpen: false
       });
     } else {
       this.setState({
@@ -61,7 +62,8 @@ class App extends Component {
   openRetailers = () => {
     if (this.state.retailersOpen === false) {
       this.setState({
-        retailersOpen: true
+        retailersOpen: true,
+        contactOpen: false
       });
     } else {
       this.setState({
