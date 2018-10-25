@@ -1,8 +1,34 @@
 import React from "react";
 import "../css/main.css";
+import * as emailjs from "emailjs-com";
 
 class Contact extends React.Component {
+  state = {
+    name: "",
+    organization: "",
+    email: "",
+    phone: "",
+    message: ""
+  };
+  componentDidMount() {
+    emailjs.init("user_LW4F13TkKWmYYIdeq1mpg");
+  }
+  handleTextChange = event => {
+    this.setState({
+      ...this.state,
+      [event.target.name]: event.target.value
+    });
+  };
+  submitEmail = () => {
+    const template = this.state;
+
+    // emailjs.send("gmail", "contact", template).then(response => {
+    //   console.log(response);
+    // });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div
         className={this.props.open ? "contact" : "contact inactive"}
@@ -15,20 +41,48 @@ class Contact extends React.Component {
             <div className="rows">
               <div className="row">
                 <p className="formtitle">NAME</p>
-                <input type="text" name="name" />
+                <input
+                  type="text"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleTextChange}
+                />
                 <p className="formtitle">ORGANIZATION</p>
-                <input type="text" name="organization" />
+                <input
+                  type="text"
+                  name="organization"
+                  value={this.state.organization}
+                  onChange={this.handleTextChange}
+                />
               </div>
               <div className="row">
                 <p className="formtitle">EMAIL</p>
-                <input type="text" name="email" />
+                <input
+                  type="text"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleTextChange}
+                />
                 <p className="formtitle">PHONE</p>
-                <input type="text" name="phone" />
+                <input
+                  type="text"
+                  name="phone"
+                  value={this.state.phone}
+                  onChange={this.handleTextChange}
+                />
               </div>
             </div>
             <p className="formtitle">MESSAGE</p>
-            <textarea type="text" name="message" className="messagefield" />
-            <div className="button">SEND</div>
+            <textarea
+              type="text"
+              name="message"
+              className="messagefield"
+              value={this.state.message}
+              onChange={this.handleTextChange}
+            />
+            <div className="button" onClick={this.submitEmail}>
+              SEND
+            </div>
           </div>
           <div className="divLine" />
           <div className="right">
