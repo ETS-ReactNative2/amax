@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const apibase = "http://clients.alexander-kim.com/amax/wp-json/wp/v2";
+const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class CollectionList extends React.Component {
   state = {
     data: [],
