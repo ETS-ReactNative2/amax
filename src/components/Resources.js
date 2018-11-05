@@ -1,54 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Resource from "./Resource";
-import "../css/resources.css";
+import React from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { Switch, Route } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import Resource from './Resource'
+import '../css/resources.css'
 
 class Resources extends React.Component {
-  handlePathChange = path => {
-    const firstPart = path.split("/")[2];
-    switch (firstPart) {
-      case "leather-care":
-        return (
-          <Resource
-            data={this.props.data.find(obj => {
-              return obj.categories[0] === 7;
-            })}
-          />
-        );
-      case "furniture-care":
-        return (
-          <Resource
-            data={this.props.data.find(obj => {
-              return obj.categories[0] === 6;
-            })}
-          />
-        );
-      case "cleaning":
-        return (
-          <Resource
-            data={this.props.data.find(obj => {
-              return obj.categories[0] === 4;
-            })}
-          />
-        );
-      case "assembly":
-        return (
-          <Resource
-            data={this.props.data.find(obj => {
-              return obj.categories[0] === 3;
-            })}
-          />
-        );
-      default:
-        return null;
-    }
-  };
   render() {
-    const splitPath =
-      this.props.path.split("/")[2] === undefined ? false : true;
     return (
-      <div className="resources" id="resources">
-        <div className={splitPath ? "sub-nav" : "sub-nav"}>
+      <div className="resources" id="resources" style={{ opacity: 0 }}>
+        <div className="sub-nav">
           <div className="headers">Resources</div>
           <div className="line" />
           <div className="linkList">
@@ -72,10 +33,57 @@ class Resources extends React.Component {
             </NavLink>
           </div>
         </div>
-        {this.handlePathChange(this.props.path)}
+        {this.props.data && (
+          <TransitionGroup>
+            <CSSTransition>
+              <Switch>
+                <Route
+                  path="/resources/leather-care"
+                  render={() => (
+                    <Resource
+                      data={this.props.data.find(obj => {
+                        return obj.categories[0] === 7
+                      })}
+                    />
+                  )}
+                />
+                <Route
+                  path="/resources/furniture-care"
+                  render={() => (
+                    <Resource
+                      data={this.props.data.find(obj => {
+                        return obj.categories[0] === 6
+                      })}
+                    />
+                  )}
+                />
+                <Route
+                  path="/resources/cleaning"
+                  render={() => (
+                    <Resource
+                      data={this.props.data.find(obj => {
+                        return obj.categories[0] === 4
+                      })}
+                    />
+                  )}
+                />
+                <Route
+                  path="/resources/assembly"
+                  render={() => (
+                    <Resource
+                      data={this.props.data.find(obj => {
+                        return obj.categories[0] === 3
+                      })}
+                    />
+                  )}
+                />
+              </Switch>
+            </CSSTransition>
+          </TransitionGroup>
+        )}
       </div>
-    );
+    )
   }
 }
 
-export default Resources;
+export default Resources

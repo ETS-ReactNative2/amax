@@ -1,33 +1,27 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import CollectionList from "./CollectionList";
-import "../css/collection.css";
-import "../css/main.css";
+import React from 'react'
+import * as utils from '../utils/animations'
+import { Switch, Route } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { NavLink } from 'react-router-dom'
+import CollectionList from './CollectionList'
+import '../css/collection.css'
+import '../css/main.css'
 
 class Collection extends React.Component {
-  handlePathChange = path => {
-    const firstPart = path.split("/")[2];
-    switch (firstPart) {
-      case "sofas":
-        return <CollectionList dataId={8} id="Sofas" />;
-      case "recliners":
-        return <CollectionList dataId={10} id="Recliners" />;
-      case "sectionals":
-        return <CollectionList dataId={11} id="Sectionals" />;
-      case "home-theaters":
-        return <CollectionList dataId={12} id="Home Theaters" />;
-      default:
-        return null;
-    }
-  };
+  onEnter = () => {
+    // console.log('entering')
+    utils.collectionSubIntro()
+  }
+
+  onExit = () => {
+    // console.log('exiting')
+    utils.collectionSubOutro()
+  }
 
   render() {
-    const splitPath =
-      this.props.path.split("/")[2] === undefined ? false : true;
     return (
-      <div className="collection" id="collection">
-        {/* {console.log(this.state)} */}
-        <div className={splitPath ? "sub-nav" : "sub-nav"}>
+      <div className="collection" id="collection" style={{ opacity: 0 }}>
+        <div className="sub-nav">
           <div className="headers title">Collection</div>
           <div className="line" />
           <div className="linkList">
@@ -62,10 +56,37 @@ class Collection extends React.Component {
             </NavLink>
           </div>
         </div>
-        {this.handlePathChange(this.props.path)}
+        <TransitionGroup>
+          <CSSTransition
+            key={this.props.history.location.key}
+            timeout={500}
+            classNames="fade"
+            onEnter={node => this.onEnter()}
+            onExit={node => this.onExit()}
+          >
+            <Switch>
+              <Route
+                path="/collection/sofas"
+                render={() => <CollectionList dataId={8} id="Sofas" />}
+              />
+              <Route
+                path="/collection/recliners"
+                render={() => <CollectionList dataId={10} id="Recliners" />}
+              />
+              <Route
+                path="/collection/sectionals"
+                render={() => <CollectionList dataId={11} id="Sectionals" />}
+              />
+              <Route
+                path="/collection/home-theaters"
+                render={() => <CollectionList dataId={12} id="Home Theaters" />}
+              />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
-    );
+    )
   }
 }
 
-export default Collection;
+export default Collection

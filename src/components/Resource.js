@@ -1,6 +1,6 @@
-import React from "react";
-import "../css/resources.css";
-import renderHTML from "react-render-html";
+import React from 'react'
+import '../css/resources.css'
+import renderHTML from 'react-render-html'
 
 class Resource extends React.Component {
   render() {
@@ -10,8 +10,8 @@ class Resource extends React.Component {
           {this.props.data && renderHTML(this.props.data.content.rendered)}
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Resource;
+export default Resource

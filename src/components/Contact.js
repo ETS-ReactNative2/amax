@@ -1,37 +1,36 @@
-import React from "react";
-import "../css/main.css";
-import * as emailjs from "emailjs-com";
+import React from 'react'
+import '../css/main.css'
+import * as emailjs from 'emailjs-com'
 
 class Contact extends React.Component {
   state = {
-    name: "",
-    organization: "",
-    email: "",
-    phone: "",
-    message: ""
-  };
+    name: '',
+    organization: '',
+    email: '',
+    phone: '',
+    message: ''
+  }
   componentDidMount() {
-    emailjs.init("user_LW4F13TkKWmYYIdeq1mpg");
+    emailjs.init('user_LW4F13TkKWmYYIdeq1mpg')
   }
   handleTextChange = event => {
     this.setState({
       ...this.state,
       [event.target.name]: event.target.value
-    });
-  };
+    })
+  }
   submitEmail = () => {
-    const template = this.state;
+    const template = this.state
 
     // emailjs.send("gmail", "contact", template).then(response => {
     //   console.log(response);
     // });
-  };
+  }
 
   render() {
-    console.log(this.state);
     return (
       <div
-        className={this.props.open ? "contact" : "contact inactive"}
+        className={this.props.open ? 'contact' : 'contact inactive'}
         id="contactwindow"
       >
         <div className="container">
@@ -101,8 +100,8 @@ class Contact extends React.Component {
           <div id="close-contact" onClick={this.props.contact} />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Contact;
+export default Contact

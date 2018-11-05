@@ -1,193 +1,158 @@
-import { TweenMax, Power3 } from "gsap";
+import { TweenMax, Power3 } from 'gsap'
 
-export const introPageAnimation = (node, path) => {
+export const introPageAnimation = (node, fullPath) => {
   switch (node.id) {
-    case "about": {
-      aboutIntroAnimation();
-      break;
+    case 'about': {
+      aboutIntroAnimation()
+      break
     }
-    case "craftmanship": {
-      craftmanshipIntroAnimation();
-      break;
+    case 'craftmanship': {
+      craftmanshipIntroAnimation()
+      break
     }
-    case "collection": {
-      if (path.split("/").length < 3) {
-        collectionIntroAnimation(node);
-      }
-      break;
+    case 'collection': {
+      collectionIntroAnimation(node)
+      break
     }
-    case "resources": {
-      if (path.split("/").length < 3) {
-        resourcesIntroAnimation();
-      }
-      break;
+    case 'resources': {
+      resourcesIntroAnimation()
+      break
     }
     default:
-      return null;
+      return null
   }
-};
+}
 
-export const outroPageAnimation = (node, path) => {
+export const outroPageAnimation = (node, fullPath) => {
+  const path = fullPath.split('/')[1]
   switch (node.id) {
-    case "about": {
-      aboutOutroAnimation();
-      break;
+    case 'about': {
+      aboutOutroAnimation()
+      break
     }
-    case "craftmanship": {
-      craftmanshipOutroAnimation();
-      break;
+    case 'craftmanship': {
+      craftmanshipOutroAnimation()
+      break
     }
-    case "collection": {
-      if (path.split("/").length < 3) {
-        collectionOutroAnimation();
+    case 'collection': {
+      if (path !== 'collection') {
+        collectionOutroAnimation()
       }
-
-      break;
+      break
     }
-    case "resources": {
-      if (path.split("/").length < 3) {
-        resourcesOutroAnimation();
+    case 'resources': {
+      if (path !== 'resources') {
+        resourcesOutroAnimation()
       }
-      break;
+      break
     }
     default:
-      return null;
+      return null
   }
-};
-
-// export const contactAnimation = () => {
-//   TweenMax.fromTo(
-//     "#contactwindow",
-//     0.3,
-//     { css:{marginTop: 100%} },
-//     { css:{marginTop: 0}, ease: Power3.easeOut}
-//   )
-// }
+}
 
 const aboutIntroAnimation = () => {
   TweenMax.fromTo(
-    "#about",
+    '#about',
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
-  );
-};
+  )
+}
 
 const aboutOutroAnimation = () => {
   TweenMax.fromTo(
-    "#about",
+    '#about',
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  );
-};
+  )
+}
 
 const craftmanshipIntroAnimation = () => {
   TweenMax.fromTo(
-    "#craftmanship",
+    '#craftmanship',
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
-  );
-};
+  )
+}
 
 const craftmanshipOutroAnimation = () => {
   TweenMax.fromTo(
-    "#craftmanship",
+    '#craftmanship',
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  );
-};
+  )
+}
 
-const collectionIntroAnimation = path => {
-  TweenMax.fromTo(
-    "#collection",
-    0.4,
-    { opacity: 0 },
-    { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
-  );
-};
+const collectionIntroAnimation = () => {
+  TweenMax.to('#collection', 0.4, {
+    opacity: 1,
+    ease: Power3.easeOut,
+    delay: 0.3
+  })
+}
 
 const collectionOutroAnimation = () => {
   TweenMax.fromTo(
-    "#collection",
+    '#collection',
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  );
-};
+  )
+}
 
-// const collectionSubIntro = () => {
-//   console.log("subintro");
-//   // TweenMax.fromTo(
-//   //   "#collection .collectionList",
-//   //   0.4,
-//   //   { opacity: 0 },
-//   //   { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
-//   // );
-// };
-
-// const collectionSubOutro = () => {
-//   // TweenMax.fromTo(
-//   //   "#resources .sub-nav",
-//   //   0.4,
-//   //   { opacity: 0 },
-//   //   { opacity: 1, ease: Power3.easeOut, delay: 0.4 }
-//   // );
-//   TweenMax.fromTo(
-//     "#collection .collectionList",
-//     0.4,
-//     { opacity: 1 },
-//     { opacity: 0, ease: Power3.easeOut }
-//   );
-// };
-
-const resourcesIntroAnimation = () => {
+export const collectionSubIntro = () => {
   TweenMax.fromTo(
-    "#resources",
+    '#collection .collectionList',
     0.4,
     { opacity: 0 },
-    { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
-  );
-};
+    { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
+  )
+}
+
+export const collectionSubOutro = () => {
+  TweenMax.fromTo(
+    '#collection .collectionList',
+    0.4,
+    { opacity: 1 },
+    { opacity: 0, ease: Power3.easeOut }
+  )
+}
+
+const resourcesIntroAnimation = () => {
+  TweenMax.to('#resources', 0.4, {
+    opacity: 1,
+    ease: Power3.easeOut,
+    delay: 0.3
+  })
+}
 
 const resourcesOutroAnimation = () => {
   TweenMax.fromTo(
-    "#resources",
+    '#resources',
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  );
-};
+  )
+}
 
-// const resourcesSubIntro = () => {
-//   //console.log("called");
-//   // TweenMax.fromTo(
-//   //   "#resources .sub-nav",
-//   //   0.4,
-//   //   { opacity: 1 },
-//   //   { opacity: 0, ease: Power3.easeOut }
-//   // );
-//   TweenMax.fromTo(
-//     "#resources .collectionList",
-//     0.4,
-//     { opacity: 0 },
-//     { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
-//   );
-// };
+export const resourcesSubIntro = () => {
+  TweenMax.fromTo(
+    '#resources .collectionList',
+    0.4,
+    { opacity: 0 },
+    { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
+  )
+}
 
-// const resourcesSubOutro = () => {
-//   // TweenMax.fromTo(
-//   //   "#resources .sub-nav",
-//   //   0.4,
-//   //   { opacity: 0 },
-//   //   { opacity: 1, ease: Power3.easeOut, delay: 0.4 }
-//   // );
-//   TweenMax.fromTo(
-//     "#resources .collectionList",
-//     0.4,
-//     { opacity: 1 },
-//     { opacity: 0, ease: Power3.easeOut }
-//   );
-// };
+export const resourcesSubOutro = () => {
+  TweenMax.fromTo(
+    '#resources .collectionList',
+    0.4,
+    { opacity: 1 },
+    { opacity: 0, ease: Power3.easeOut }
+  )
+}
