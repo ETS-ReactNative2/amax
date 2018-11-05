@@ -27,7 +27,10 @@ class CollectionList extends React.Component {
             <div key={item.id}>
               <p />
               <div className="collectionNode">
-                <p className="collectionName">{item.title.rendered}</p>
+                <div className="collectionName">
+                  <p>{item.title.rendered}</p>
+                  <p>{item.acf.dimensions}</p>
+                </div>
                 <div className="image">
                   <div className="imageContainer">
                     <img
