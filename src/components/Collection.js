@@ -29,6 +29,7 @@ class Collection extends React.Component {
         {/* {console.log(this.state)} */}
         <div className={splitPath ? "sub-nav" : "sub-nav"}>
           <div className="headers title">Collection</div>
+          <div className="line" />
           <div className="linkList">
             <NavLink
               to="/collection/sofas"

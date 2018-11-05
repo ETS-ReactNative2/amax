@@ -18,7 +18,7 @@ class Navbar extends React.Component {
           </NavLink>
         </div>
         <div className="navitem">
-          <NavLink to="/collection" activeClassName="selectedlink">
+          <NavLink to="/collection/sofas" activeClassName="selectedlink">
             collection
           </NavLink>
         </div>
@@ -28,7 +28,7 @@ class Navbar extends React.Component {
           </NavLink>
         </div>
         <div className="navitem">
-          <NavLink to="/resources" activeClassName="selectedlink">
+          <NavLink to="/resources/leather-care" activeClassName="selectedlink">
             resources
           </NavLink>
         </div>

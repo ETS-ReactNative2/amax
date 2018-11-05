@@ -22,7 +22,7 @@ class CollectionList extends React.Component {
   render() {
     return (
       <div className="collectionList">
-        {!this.state.loading ? (
+        {this.state.data &&
           this.state.data.map(item => (
             <div key={item.id}>
               <p />
@@ -38,10 +38,7 @@ class CollectionList extends React.Component {
                 </div>
               </div>
             </div>
-          ))
-        ) : (
-          <div>loading...</div>
-        )}
+          ))}
       </div>
     );
   }

@@ -50,6 +50,7 @@ class Resources extends React.Component {
       <div className="resources" id="resources">
         <div className={splitPath ? "sub-nav" : "sub-nav"}>
           <div className="headers">Resources</div>
+          <div className="line" />
           <div className="linkList">
             <NavLink
               to="/resources/leather-care"

@@ -3,7 +3,7 @@ import "../../css/main.css";
 import axios from "axios";
 import _ from "lodash";
 
-const apibase = "http://clients.alexander-kim.com/amax/wp-json/wp/v2";
+const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class Retailers extends React.Component {
   state = {
     page: 0,
