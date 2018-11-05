@@ -14,7 +14,7 @@ import Bottombar from "./components/Bottombar";
 import axios from "axios";
 import Retailers from "./components/retailers/Retailers";
 
-const apibase = "http://clients.alexander-kim.com/amax/wp-json/wp/v2";
+const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class App extends Component {
   state = {
     path: "",
