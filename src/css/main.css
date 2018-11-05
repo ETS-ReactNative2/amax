@@ -66,6 +66,13 @@ body {
 
 .navbar .navitem {
   margin: 15px 0 15px 50px;
+  transition: 0.2s;
+}
+.navbar .navitem:hover a {
+  color: #282525a2;
+}
+.navbar .navitem:hover a.selectedlink {
+  color: #78191a;
 }
 
 .navbar .logo-image {
@@ -143,6 +150,7 @@ body {
   justify-content: flex-end;
   max-width: 1150px;
   min-width: 950px;
+  margin-bottom: 10px;
 }
 .topbar a {
   margin-bottom: 5px;
@@ -150,6 +158,11 @@ body {
   height: 20px;
   width: 20px;
   opacity: 0.5;
+  transition: 0.2s;
+}
+
+.topbar a:hover {
+  opacity: 0.3;
 }
 
 .topbar a.twitter {
@@ -178,13 +191,6 @@ body {
   background-position: center;
 }
 
-a {
-  transition: 0.2s;
-}
-a:hover {
-  opacity: 0.7;
-}
-
 a.selectedlink {
   color: #78191a;
 }
@@ -195,7 +201,6 @@ a.selectedlink {
   max-width: 1150px;
   min-width: 950px;
   margin-top: 15px;
-  opacity: 0.7;
 }
 .bottombar .right {
   display: flex;
@@ -208,9 +213,14 @@ a.selectedlink {
   letter-spacing: 2px;
   cursor: pointer;
   transition: 0.2s;
+  opacity: 0.7;
 }
 .bottombar .botButton:hover {
+  opacity: 0.5;
+}
+.bottombar .linespan {
   opacity: 0.7;
+  margin: 0 5px;
 }
 
 /* contact and retailer stuff */
