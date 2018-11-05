@@ -1,109 +1,109 @@
-import { TweenMax, Power3 } from 'gsap'
+import { TweenMax, Power3 } from "gsap";
 
 export const introPageAnimation = (node, fullPath) => {
   switch (node.id) {
-    case 'about': {
-      aboutIntroAnimation()
-      break
+    case "about": {
+      aboutIntroAnimation();
+      break;
     }
-    case 'craftmanship': {
-      craftmanshipIntroAnimation()
-      break
+    case "craftmanship": {
+      craftmanshipIntroAnimation();
+      break;
     }
-    case 'collection': {
-      collectionIntroAnimation()
-      break
+    case "collection": {
+      collectionIntroAnimation();
+      break;
     }
-    case 'resources': {
-      resourcesIntroAnimation()
-      break
+    case "resources": {
+      resourcesIntroAnimation();
+      break;
     }
     default:
-      return null
+      return null;
   }
-}
+};
 
 export const outroPageAnimation = (node, fullPath) => {
-  const path = fullPath.split('/')[1]
+  const path = fullPath.split("/")[1];
   switch (node.id) {
-    case 'about': {
-      aboutOutroAnimation()
-      break
+    case "about": {
+      aboutOutroAnimation();
+      break;
     }
-    case 'craftmanship': {
-      craftmanshipOutroAnimation()
-      break
+    case "craftmanship": {
+      craftmanshipOutroAnimation();
+      break;
     }
-    case 'collection': {
-      if (path !== 'collection') {
-        collectionOutroAnimation()
+    case "collection": {
+      if (path !== "collection") {
+        collectionOutroAnimation();
       }
-      break
+      break;
     }
-    case 'resources': {
-      if (path !== 'resources') {
-        console.log('here')
-        resourcesOutroAnimation()
+    case "resources": {
+      if (path !== "resources") {
+        // console.log('here')
+        resourcesOutroAnimation();
       }
-      break
+      break;
     }
     default:
-      return null
+      return null;
   }
-}
+};
 
 const aboutIntroAnimation = () => {
   TweenMax.fromTo(
-    '#about',
+    "#about",
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
-  )
-}
+  );
+};
 
 const aboutOutroAnimation = () => {
   TweenMax.fromTo(
-    '#about',
+    "#about",
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  )
-}
+  );
+};
 
 const craftmanshipIntroAnimation = () => {
   TweenMax.fromTo(
-    '#craftmanship',
+    "#craftmanship",
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
-  )
-}
+  );
+};
 
 const craftmanshipOutroAnimation = () => {
   TweenMax.fromTo(
-    '#craftmanship',
+    "#craftmanship",
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  )
-}
+  );
+};
 
 const collectionIntroAnimation = () => {
-  TweenMax.to('#collection', 0.4, {
+  TweenMax.to("#collection", 0.4, {
     opacity: 1,
     ease: Power3.easeOut,
     delay: 0.3
-  })
-}
+  });
+};
 
 const collectionOutroAnimation = () => {
   TweenMax.fromTo(
-    '#collection',
+    "#collection",
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  )
-}
+  );
+};
 
 export const collectionSubIntro = node => {
   TweenMax.fromTo(
@@ -111,8 +111,8 @@ export const collectionSubIntro = node => {
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
-  )
-}
+  );
+};
 
 export const collectionSubOutro = node => {
   TweenMax.fromTo(
@@ -120,25 +120,25 @@ export const collectionSubOutro = node => {
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  )
-}
+  );
+};
 
 const resourcesIntroAnimation = () => {
-  TweenMax.to('#resources', 0.4, {
+  TweenMax.to("#resources", 0.4, {
     opacity: 1,
     ease: Power3.easeOut,
     delay: 0.3
-  })
-}
+  });
+};
 
 const resourcesOutroAnimation = () => {
   TweenMax.fromTo(
-    '#resources',
+    "#resources",
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  )
-}
+  );
+};
 
 export const resourcesSubIntro = node => {
   TweenMax.fromTo(
@@ -146,15 +146,15 @@ export const resourcesSubIntro = node => {
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
-  )
-}
+  );
+};
 
 export const resourcesSubOutro = node => {
-  console.log('OUTRO')
+  // console.log('OUTRO')
   TweenMax.fromTo(
     node,
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
-  )
-}
+  );
+};
