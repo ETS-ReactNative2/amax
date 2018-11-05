@@ -8,14 +8,16 @@ import '../css/collection.css'
 import '../css/main.css'
 
 class Collection extends React.Component {
-  onEnter = () => {
-    // console.log('entering')
-    utils.collectionSubIntro()
+  onEnter = node => {
+    if (node) {
+      utils.collectionSubIntro(node)
+    }
   }
 
-  onExit = () => {
-    // console.log('exiting')
-    utils.collectionSubOutro()
+  onExit = node => {
+    if (node) {
+      utils.collectionSubOutro(node)
+    }
   }
 
   render() {
@@ -61,8 +63,8 @@ class Collection extends React.Component {
             key={this.props.history.location.key}
             timeout={500}
             classNames="fade"
-            onEnter={node => this.onEnter()}
-            onExit={node => this.onExit()}
+            onEnter={node => this.onEnter(node)}
+            onExit={node => this.onExit(node)}
           >
             <Switch>
               <Route

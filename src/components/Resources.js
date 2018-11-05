@@ -1,11 +1,23 @@
 import React from 'react'
+import * as utils from '../utils/animations'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import Resource from './Resource'
 import '../css/resources.css'
 
 class Resources extends React.Component {
+  onEnter = node => {
+    if (node) {
+      utils.resourcesSubIntro(node)
+    }
+  }
+
+  onExit = node => {
+    if (node) {
+      utils.resourcesSubOutro(node)
+    }
+  }
   render() {
     return (
       <div className="resources" id="resources" style={{ opacity: 0 }}>
@@ -34,9 +46,15 @@ class Resources extends React.Component {
           </div>
         </div>
         {this.props.data && (
-          <TransitionGroup>
-            <CSSTransition>
-              <Switch>
+          <TransitionGroup className="resource" id="resource">
+            <CSSTransition
+              key={this.props.history.location.key}
+              timeout={5000}
+              classNames="fade"
+              onEnter={node => this.onEnter(node)}
+              onExit={node => this.onExit(node)}
+            >
+              <Switch location={this.props.history.location}>
                 <Route
                   path="/resources/leather-care"
                   render={() => (
@@ -86,4 +104,4 @@ class Resources extends React.Component {
   }
 }
 
-export default Resources
+export default withRouter(Resources)

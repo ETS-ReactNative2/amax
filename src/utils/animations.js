@@ -11,7 +11,7 @@ export const introPageAnimation = (node, fullPath) => {
       break
     }
     case 'collection': {
-      collectionIntroAnimation(node)
+      collectionIntroAnimation()
       break
     }
     case 'resources': {
@@ -42,6 +42,7 @@ export const outroPageAnimation = (node, fullPath) => {
     }
     case 'resources': {
       if (path !== 'resources') {
+        console.log('here')
         resourcesOutroAnimation()
       }
       break
@@ -104,18 +105,18 @@ const collectionOutroAnimation = () => {
   )
 }
 
-export const collectionSubIntro = () => {
+export const collectionSubIntro = node => {
   TweenMax.fromTo(
-    '#collection .collectionList',
+    node,
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
   )
 }
 
-export const collectionSubOutro = () => {
+export const collectionSubOutro = node => {
   TweenMax.fromTo(
-    '#collection .collectionList',
+    node,
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }
@@ -139,18 +140,19 @@ const resourcesOutroAnimation = () => {
   )
 }
 
-export const resourcesSubIntro = () => {
+export const resourcesSubIntro = node => {
   TweenMax.fromTo(
-    '#resources .collectionList',
+    node,
     0.4,
     { opacity: 0 },
     { opacity: 1, ease: Power3.easeOut, delay: 0.6 }
   )
 }
 
-export const resourcesSubOutro = () => {
+export const resourcesSubOutro = node => {
+  console.log('OUTRO')
   TweenMax.fromTo(
-    '#resources .collectionList',
+    node,
     0.4,
     { opacity: 1 },
     { opacity: 0, ease: Power3.easeOut }

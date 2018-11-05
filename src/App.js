@@ -70,7 +70,7 @@ class App extends Component {
         <Topbar />
         <div className="main-container">
           <Navbar onHome={this.checkOnHome()} />
-          <TransitionGroup>
+          <TransitionGroup appear={true}>
             <CSSTransition
               key={this.props.location.key}
               timeout={500}
