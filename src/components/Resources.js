@@ -72,6 +72,7 @@ class Resources extends React.Component {
             </NavLink>
           </div>
         </div>
+        <div />
         {this.handlePathChange(this.props.path)}
       </div>
     );
