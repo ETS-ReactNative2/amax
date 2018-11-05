@@ -94,6 +94,17 @@ body {
   transition: all 0.3s;
 }
 
+.preloader {
+  position: absolute;
+  background-image: url(../images/preloader.gif);
+  height: 100px;
+  width: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 40%;
+  margin-top: 30%;
+}
+
 .topbar {
   display: flex;
   width: 70%;

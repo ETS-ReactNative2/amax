@@ -1,24 +1,18 @@
-import React from 'react'
-import * as utils from '../utils/animations'
-import { Switch, Route } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { NavLink } from 'react-router-dom'
-import CollectionList from './CollectionList'
-import '../css/collection.css'
-import '../css/main.css'
+import React from "react";
+import * as utils from "../utils/animations";
+import { Switch, Route } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { NavLink } from "react-router-dom";
+import CollectionList from "./CollectionList";
+import "../css/collection.css";
+import "../css/main.css";
 
 class Collection extends React.Component {
-  onEnter = node => {
-    if (node) {
-      utils.collectionSubIntro(node)
-    }
-  }
-
   onExit = node => {
     if (node) {
-      utils.collectionSubOutro(node)
+      utils.collectionSubOutro(node);
     }
-  }
+  };
 
   render() {
     return (
@@ -63,7 +57,6 @@ class Collection extends React.Component {
             key={this.props.history.location.key}
             timeout={500}
             classNames="fade"
-            onEnter={node => this.onEnter(node)}
             onExit={node => this.onExit(node)}
           >
             <Switch>
@@ -87,8 +80,8 @@ class Collection extends React.Component {
           </CSSTransition>
         </TransitionGroup>
       </div>
-    )
+    );
   }
 }
 
-export default Collection
+export default Collection;

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import * as utils from "../utils/animations";
 
 const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class CollectionList extends React.Component {
@@ -7,24 +8,36 @@ class CollectionList extends React.Component {
     data: [],
     loading: true
   };
+
+  collectionRef = React.createRef();
+
   componentWillMount() {
     axios
       .get(
         `${apibase}/collection?furnituretype=${this.props.dataId}&per_page=100`
       )
       .then(data => {
-        this.setState({
-          data: data.data,
-          loading: false
-        });
+        setTimeout(() => {
+          this.setState({
+            data: data.data,
+            loading: false
+          });
+        }, 200);
       });
   }
+
+  componentDidUpdate({}, prevState) {
+    if (this.state.loading !== prevState.loading && !this.state.loading) {
+      utils.collectionSubIntro(this.collectionRef.current.children);
+    }
+  }
+
   render() {
     return (
-      <div className="collectionList">
+      <div ref={this.collectionRef} className="collectionList">
         {!this.state.loading ? (
           this.state.data.map(item => (
-            <div key={item.id}>
+            <div key={item.id} style={{ opacity: 0 }}>
               <p />
               <div className="collectionNode">
                 <div className="collectionName">
@@ -43,7 +56,7 @@ class CollectionList extends React.Component {
             </div>
           ))
         ) : (
-          <div>loading...</div>
+          <div className="preloader" />
         )}
       </div>
     );
