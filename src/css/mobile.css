@@ -1,0 +1,16 @@
+@media screen and (max-height: 700px) {
+  .topbar {
+    position: absolute;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 70vh;
+    margin-left: 30px;
+    min-height: 600px;
+    flex-direction: column-reverse;
+    margin-top: -40px;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+}
