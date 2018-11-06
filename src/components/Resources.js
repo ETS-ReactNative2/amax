@@ -1,28 +1,33 @@
-import React from 'react'
-import * as utils from '../utils/animations'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { Switch, Route, withRouter } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
-import Resource from './Resource'
-import '../css/resources.css'
+import React from "react";
+import * as utils from "../utils/animations";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Resource from "./Resource";
+import "../css/resources.css";
 
 class Resources extends React.Component {
   onEnter = node => {
     if (node) {
-      utils.resourcesSubIntro(node)
+      utils.resourcesSubIntro(node);
     }
-  }
+  };
 
   onExit = node => {
     if (node) {
-      utils.resourcesSubOutro(node)
+      utils.resourcesSubOutro(node);
     }
-  }
+  };
   render() {
     return (
       <div className="resources" id="resources" style={{ opacity: 0 }}>
         <div className="sub-nav">
-          <div className="headers">Resources</div>
+          <div className="headers">
+            <NavLink className="mobileBack" to="">
+              {"<"}
+            </NavLink>{" "}
+            Resources
+          </div>
           <div className="line" />
           <div className="linkList">
             <NavLink
@@ -60,7 +65,7 @@ class Resources extends React.Component {
                   render={() => (
                     <Resource
                       data={this.props.data.find(obj => {
-                        return obj.categories[0] === 7
+                        return obj.categories[0] === 7;
                       })}
                     />
                   )}
@@ -70,7 +75,7 @@ class Resources extends React.Component {
                   render={() => (
                     <Resource
                       data={this.props.data.find(obj => {
-                        return obj.categories[0] === 6
+                        return obj.categories[0] === 6;
                       })}
                     />
                   )}
@@ -80,7 +85,7 @@ class Resources extends React.Component {
                   render={() => (
                     <Resource
                       data={this.props.data.find(obj => {
-                        return obj.categories[0] === 4
+                        return obj.categories[0] === 4;
                       })}
                     />
                   )}
@@ -90,7 +95,7 @@ class Resources extends React.Component {
                   render={() => (
                     <Resource
                       data={this.props.data.find(obj => {
-                        return obj.categories[0] === 3
+                        return obj.categories[0] === 3;
                       })}
                     />
                   )}
@@ -100,8 +105,8 @@ class Resources extends React.Component {
           </TransitionGroup>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default withRouter(Resources)
+export default withRouter(Resources);

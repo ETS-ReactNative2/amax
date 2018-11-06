@@ -18,7 +18,12 @@ class Collection extends React.Component {
     return (
       <div className="collection" id="collection" style={{ opacity: 0 }}>
         <div className="sub-nav">
-          <div className="headers title">Collection</div>
+          <div className="headers title">
+            <NavLink className="mobileBack" to="">
+              {"<"}
+            </NavLink>{" "}
+            Collection
+          </div>
           <div className="line" />
           <div className="linkList">
             <NavLink

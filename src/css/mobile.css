@@ -1,4 +1,8 @@
-@media screen and (max-height: 700px) {
+.mobileBack {
+  display: none;
+}
+
+@media screen and (max-height: 700px) and (min-width: 450px) {
   .topbar {
     position: absolute;
     flex-direction: column;
@@ -11,6 +15,100 @@
   }
 }
 
-/* On screens that are 600px or less, set the background color to olive */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+  .main-container {
+    min-width: 300px;
+    width: 90%;
+  }
+  .topbar {
+    min-width: 300px;
+    width: 90%;
+  }
+  .bottombar {
+    min-width: 300px;
+    width: 90%;
+  }
+  .navbar .logo-image {
+    width: 160px;
+  }
+  .navbar.sub-page {
+    transform: translateX(-35%);
+  }
+  .linkList a {
+    font-size: 12px;
+    letter-spacing: 0.3px;
+  }
+  #collection .collectionList {
+    top: 20%;
+  }
+  .navbar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mobileBack {
+    display: inline;
+  }
+  .navbar.sub-page {
+    transform: translateX(-200%);
+  }
+  .about,
+  .collection,
+  .resources,
+  .craftmanship {
+    width: 90%;
+    left: 0;
+    margin-left: 5%;
+    padding-right: 5%;
+  }
+  .main-container {
+    min-height: 85%;
+  }
+  .topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: 0;
+    position: static;
+    height: auto;
+  }
+  #collection .collectionList {
+    top: 30%;
+  }
+  .collectionNode {
+    width: 100%;
+    margin-left: 5%;
+  }
+  .collectionName p {
+    font-size: 12px;
+  }
+  .line {
+    display: none;
+  }
+  #contactwindow {
+    overflow-y: scroll;
+  }
+  #contactwindow .container {
+    flex-direction: column;
+  }
+  #contactwindow .container .left {
+    width: 90%;
+  }
+  #contactwindow .container .left .rows {
+    flex-direction: column;
+  }
+  #contactwindow .container .left .row {
+    width: 100%;
+    margin-bottom: 100px;
+  }
+  #contactwindow .container .divLine {
+    display: none;
+  }
+  #contactwindow .container .right {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
