@@ -24,7 +24,7 @@ class Resources extends React.Component {
         <div className="sub-nav">
           <div className="headers">
             <NavLink className="mobileBack" to="">
-              {"<"}
+              {""}
             </NavLink>{" "}
             Resources
           </div>

@@ -20,7 +20,7 @@ class Collection extends React.Component {
         <div className="sub-nav">
           <div className="headers title">
             <NavLink className="mobileBack" to="">
-              {"<"}
+              {""}
             </NavLink>{" "}
             Collection
           </div>

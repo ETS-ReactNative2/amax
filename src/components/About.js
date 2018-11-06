@@ -9,7 +9,7 @@ class About extends React.Component {
       <div className="about" id="about">
         <div className="headers top">
           <NavLink className="mobileBack" to="">
-            {"<"}
+            {""}
           </NavLink>{" "}
           About
         </div>

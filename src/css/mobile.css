@@ -44,11 +44,47 @@
   .navbar {
     width: 50%;
   }
+  #contactwindow {
+    overflow-y: scroll;
+  }
+  #contactwindow .container {
+    flex-direction: column;
+    height: auto;
+  }
+  #contactwindow .container .left {
+    width: 90%;
+  }
+  #contactwindow .container .left h2 {
+    margin: 0 0 40px;
+    font-size: 25px;
+  }
+  #contactwindow .container .left .rows {
+    flex-direction: column;
+  }
+  #contactwindow .container .left .row {
+    width: 100%;
+  }
+  #contactwindow .container .left .row input {
+    margin-bottom: 20px;
+  }
+  #contactwindow .container .left .logo {
+    height: 200px;
+    margin-top: 20px;
+  }
+  #contactwindow .container .divLine {
+    width: 90%;
+    height: 1px;
+    margin: 60px auto;
+  }
+  #contactwindow .container .right {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width: 450px) {
   .mobileBack {
-    display: inline;
+    display: inline-block;
   }
   .navbar.sub-page {
     transform: translateX(-200%);
@@ -88,27 +124,24 @@
   .line {
     display: none;
   }
-  #contactwindow {
-    overflow-y: scroll;
+  #contactwindow .container .left h2 {
+    font-size: 22px;
   }
-  #contactwindow .container {
+  #retailerswindow #close-retailer {
+    margin-left: 91%;
+    top: 3%;
+  }
+  #retailerswindow .container #countries {
     flex-direction: column;
   }
-  #contactwindow .container .left {
-    width: 90%;
+  #retailerswindow .container #countries .country {
+    height: 50px;
   }
-  #contactwindow .container .left .rows {
-    flex-direction: column;
+  #retailerswindow .container h2 {
+    letter-spacing: 0.3px;
+    text-align: center;
   }
-  #contactwindow .container .left .row {
-    width: 100%;
-    margin-bottom: 100px;
-  }
-  #contactwindow .container .divLine {
-    display: none;
-  }
-  #contactwindow .container .right {
-    width: 90%;
-    margin: 0 auto;
+  #retailerswindow .container #location .list {
+    padding-left: 0;
   }
 }

@@ -9,7 +9,7 @@ class Craftmanship extends React.Component {
       <div className="craftmanship" id="craftmanship">
         <div className="headers top">
           <NavLink className="mobileBack" to="">
-            {"<"}
+            {""}
           </NavLink>{" "}
           Craftmanship
         </div>
