@@ -1,87 +1,121 @@
-import React from 'react'
-import '../css/main.css'
-import * as emailjs from 'emailjs-com'
+import React from "react";
+import "../css/main.css";
+import * as emailjs from "emailjs-com";
 
 class Contact extends React.Component {
   state = {
-    name: '',
-    organization: '',
-    email: '',
-    phone: '',
-    message: ''
-  }
+    name: "",
+    organization: "",
+    email: "",
+    phone: "",
+    message: "",
+    sendState: 0
+  };
   componentDidMount() {
-    emailjs.init('user_LW4F13TkKWmYYIdeq1mpg')
+    emailjs.init("user_LW4F13TkKWmYYIdeq1mpg");
   }
   handleTextChange = event => {
     this.setState({
       ...this.state,
       [event.target.name]: event.target.value
-    })
-  }
+    });
+  };
   submitEmail = () => {
-    const template = this.state
+    this.setState({
+      sendState: 1
+    });
+    const template = this.state;
 
-    // emailjs.send("gmail", "contact", template).then(response => {
-    //   console.log(response);
-    // });
-  }
+    emailjs.send("gmail", "contact", template).then(response => {
+      console.log(response);
+      this.setState({ sendState: 2 });
+    });
+  };
+
+  emailState = () => {
+    if (this.state.sendState === 0) {
+      return (
+        <form className="contactforms" onSubmit={this.submitEmail}>
+          <div className="rows">
+            <div className="row">
+              <p className="formtitle">NAME</p>
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleTextChange}
+                placeholder="John Doe"
+                required
+              />
+              <p className="formtitle">ORGANIZATION</p>
+              <input
+                type="text"
+                name="organization"
+                value={this.state.organization}
+                onChange={this.handleTextChange}
+                placeholder="John Doe's Furniture Store"
+                required
+              />
+            </div>
+            <div className="row">
+              <p className="formtitle">EMAIL</p>
+              <input
+                type="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleTextChange}
+                placeholder="John.Doe@gmail.com"
+                required
+              />
+              <p className="formtitle">PHONE</p>
+              <input
+                type="number"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleTextChange}
+                placeholder="1234567890"
+                required
+              />
+            </div>
+          </div>
+          <p className="formtitle">MESSAGE</p>
+          <textarea
+            type="text"
+            name="message"
+            className="messagefield"
+            value={this.state.message}
+            onChange={this.handleTextChange}
+            required
+          />
+          <button className="button">SEND</button>
+        </form>
+      );
+    } else if (this.state.sendState === 1) {
+      return (
+        <div className="contactforms">
+          <div>sending...</div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="contactforms">
+          "<div>Done!</div>
+        </div>
+      );
+    }
+  };
 
   render() {
     return (
       <div
-        className={this.props.open ? 'contact' : 'contact inactive'}
+        className={this.props.open ? "contact" : "contact inactive"}
         id="contactwindow"
       >
         <div className="container">
           <div className="left">
             <div className="logo" />
             <h2>We're always here to help! Lets chat!</h2>
-            <div className="rows">
-              <div className="row">
-                <p className="formtitle">NAME</p>
-                <input
-                  type="text"
-                  name="name"
-                  value={this.state.name}
-                  onChange={this.handleTextChange}
-                />
-                <p className="formtitle">ORGANIZATION</p>
-                <input
-                  type="text"
-                  name="organization"
-                  value={this.state.organization}
-                  onChange={this.handleTextChange}
-                />
-              </div>
-              <div className="row">
-                <p className="formtitle">EMAIL</p>
-                <input
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleTextChange}
-                />
-                <p className="formtitle">PHONE</p>
-                <input
-                  type="text"
-                  name="phone"
-                  value={this.state.phone}
-                  onChange={this.handleTextChange}
-                />
-              </div>
-            </div>
-            <p className="formtitle">MESSAGE</p>
-            <textarea
-              type="text"
-              name="message"
-              className="messagefield"
-              value={this.state.message}
-              onChange={this.handleTextChange}
-            />
-            <div className="button" onClick={this.submitEmail}>
-              SEND
-            </div>
+            {this.emailState()}
           </div>
           <div className="divLine" />
           <div className="right">
@@ -100,8 +134,8 @@ class Contact extends React.Component {
           <div id="close-contact" onClick={this.props.contact} />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Contact
+export default Contact;

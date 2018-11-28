@@ -80,6 +80,9 @@
     width: 90%;
     margin: 0 auto;
   }
+  #contactwindow .contactforms {
+    height: 600px;
+  }
 }
 
 @media screen and (max-width: 450px) {

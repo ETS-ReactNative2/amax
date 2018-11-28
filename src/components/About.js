@@ -2,6 +2,7 @@ import React from "react";
 import "../css/about.css";
 import renderHTML from "react-render-html";
 import { NavLink } from "react-router-dom";
+import Slider from "Slider";
 
 class About extends React.Component {
   render() {
