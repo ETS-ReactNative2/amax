@@ -18,6 +18,9 @@ class Slider extends React.Component {
       });
     });
   }
+  componentDidMount() {
+    this.sliderCycle();
+  }
   //   componentDidUpdate() {
   //     this.state.loading
   //       ? console.log("wait")
@@ -43,6 +46,7 @@ class Slider extends React.Component {
             : "sliderPos"
         }
         id={imageArray.indexOf(image)}
+        key={`image${imageArray.indexOf(image)}`}
         onClick={() => {
           this.setState({ sliderPos: imageArray.indexOf(image) });
         }}
@@ -61,6 +65,16 @@ class Slider extends React.Component {
       marginLeft: `-${100 * this.state.sliderPos}%`
     };
     return style;
+  };
+  sliderCycle = () => {
+    console.log("hi");
+    setTimeout(() => {
+      this.state.sliderPos === 2
+        ? this.setState({ sliderPos: 0 })
+        : this.setState({ sliderPos: this.state.sliderPos + 1 });
+      console.log("looped");
+      this.sliderCycle();
+    }, 6000);
   };
 
   render() {
