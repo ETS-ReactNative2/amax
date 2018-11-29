@@ -12,7 +12,7 @@ class Contact extends React.Component {
     sendState: 0
   };
   componentDidMount() {
-    emailjs.init("!!user_LW4F13TkKWmYYIdeq1mpg");
+    emailjs.init("user_LW4F13TkKWmYYIdeq1mpg");
   }
   handleTextChange = event => {
     this.setState({
