@@ -42,7 +42,7 @@ class CollectionList extends React.Component {
               <div className="collectionNode">
                 <div className="collectionName">
                   <p>{item.title.rendered}</p>
-                  <p>{item.acf.dimensions}</p>
+                  <p className="dimensions">{item.acf.dimensions}</p>
                 </div>
                 <div className="image">
                   <div className="imageContainer">
