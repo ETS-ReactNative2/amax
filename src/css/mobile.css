@@ -83,6 +83,9 @@
   #contactwindow .contactforms {
     height: 600px;
   }
+  #contactwindow .contactforms.sent {
+    height: 160px;
+  }
 }
 
 @media screen and (max-width: 450px) {

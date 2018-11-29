@@ -196,6 +196,12 @@ a.selectedlink {
 
 /* contact and retailer stuff */
 
+#contactwindow .preloader {
+  margin-top: 15%;
+  margin-left: 40%;
+  position: static;
+}
+
 #contactwindow,
 #retailerswindow {
   width: 100%;

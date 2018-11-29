@@ -12,7 +12,7 @@ class Contact extends React.Component {
     sendState: 0
   };
   componentDidMount() {
-    emailjs.init("user_LW4F13TkKWmYYIdeq1mpg");
+    emailjs.init("!!user_LW4F13TkKWmYYIdeq1mpg");
   }
   handleTextChange = event => {
     this.setState({
@@ -92,14 +92,14 @@ class Contact extends React.Component {
       );
     } else if (this.state.sendState === 1) {
       return (
-        <div className="contactforms">
-          <div>sending...</div>
+        <div className="contactforms sent">
+          <div className="preloader" />
         </div>
       );
     } else {
       return (
-        <div className="contactforms">
-          "<div>Done!</div>
+        <div className="contactforms sent">
+          <div>Message has been sent!</div>
         </div>
       );
     }
