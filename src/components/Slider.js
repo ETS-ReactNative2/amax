@@ -74,7 +74,7 @@ class Slider extends React.Component {
         : this.setState({ sliderPos: this.state.sliderPos + 1 });
       console.log("looped");
       this.sliderCycle();
-    }, 4000);
+    }, 3000);
   };
 
   render() {
