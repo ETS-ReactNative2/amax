@@ -89,6 +89,13 @@ body {
   margin-top: 50px;
 }
 
+a.tertiaryButton:hover {
+  opacity: 0.7;
+}
+a.tertiaryButton.selectedlink:hover {
+  opacity: 1;
+}
+
 .inactive {
   opacity: 0;
   visibility: hidden;
@@ -125,7 +132,7 @@ body {
   margin-left: 50%;
   height: 300px;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: left;
   align-self: center;
 }
