@@ -348,6 +348,9 @@ a.selectedlink {
 #contactwindow .contactforms {
   height: 350px;
 }
+#contactwindow .required {
+  color: red;
+}
 
 /* retailer window */
 

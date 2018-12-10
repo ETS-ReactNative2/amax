@@ -38,7 +38,9 @@ class Contact extends React.Component {
         <form className="contactforms" onSubmit={this.submitEmail}>
           <div className="rows">
             <div className="row">
-              <p className="formtitle">NAME</p>
+              <p className="formtitle">
+                NAME<i className="required">*</i>
+              </p>
               <input
                 type="text"
                 name="name"
@@ -47,7 +49,9 @@ class Contact extends React.Component {
                 placeholder="John Doe"
                 required
               />
-              <p className="formtitle">PHONE</p>
+              <p className="formtitle">
+                PHONE<i className="required">*</i>
+              </p>
               <input
                 type="number"
                 name="phone"
@@ -58,7 +62,9 @@ class Contact extends React.Component {
               />
             </div>
             <div className="row">
-              <p className="formtitle">EMAIL</p>
+              <p className="formtitle">
+                EMAIL<i className="required">*</i>
+              </p>
               <input
                 type="email"
                 name="email"
@@ -74,12 +80,13 @@ class Contact extends React.Component {
                 name="subject"
                 value={this.state.subject}
                 onChange={this.handleTextChange}
-                placeholder="John Doe's Furniture Store"
-                required
+                placeholder="Product Information"
               />
             </div>
           </div>
-          <p className="formtitle">MESSAGE</p>
+          <p className="formtitle">
+            MESSAGE<i className="required">*</i>
+          </p>
           <textarea
             type="text"
             name="message"
