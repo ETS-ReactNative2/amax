@@ -5,7 +5,7 @@ import * as emailjs from "emailjs-com";
 class Contact extends React.Component {
   state = {
     name: "",
-    organization: "",
+    subject: "",
     email: "",
     phone: "",
     message: "",
@@ -27,7 +27,7 @@ class Contact extends React.Component {
     const template = this.state;
 
     emailjs.send("gmail", "contact", template).then(response => {
-      console.log(response);
+      // console.log(response);
       this.setState({ sendState: 2 });
     });
   };
@@ -47,13 +47,13 @@ class Contact extends React.Component {
                 placeholder="John Doe"
                 required
               />
-              <p className="formtitle">ORGANIZATION</p>
+              <p className="formtitle">PHONE</p>
               <input
-                type="text"
-                name="organization"
-                value={this.state.organization}
+                type="number"
+                name="phone"
+                value={this.state.phone}
                 onChange={this.handleTextChange}
-                placeholder="John Doe's Furniture Store"
+                placeholder="1234567890"
                 required
               />
             </div>
@@ -67,13 +67,14 @@ class Contact extends React.Component {
                 placeholder="John.Doe@gmail.com"
                 required
               />
-              <p className="formtitle">PHONE</p>
+
+              <p className="formtitle">SUBJECT</p>
               <input
-                type="number"
-                name="phone"
-                value={this.state.phone}
+                type="text"
+                name="subject"
+                value={this.state.subject}
                 onChange={this.handleTextChange}
-                placeholder="1234567890"
+                placeholder="John Doe's Furniture Store"
                 required
               />
             </div>

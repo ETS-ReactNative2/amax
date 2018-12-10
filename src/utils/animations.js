@@ -19,7 +19,9 @@ export const introPageAnimation = (node, fullPath) => {
       break;
     }
     default:
-      return null;
+      homeIntroAnimation();
+      break;
+    // return null;
   }
 };
 
@@ -48,8 +50,28 @@ export const outroPageAnimation = (node, fullPath) => {
       break;
     }
     default:
-      return null;
+      homeOutroAnimation();
+      break;
+    // return null;
   }
+};
+
+const homeIntroAnimation = () => {
+  TweenMax.fromTo(
+    "#home",
+    0.4,
+    { opacity: 0 },
+    { opacity: 1, ease: Power3.easeOut, delay: 0.3 }
+  );
+};
+
+const homeOutroAnimation = () => {
+  TweenMax.fromTo(
+    "#home",
+    0.4,
+    { opacity: 1 },
+    { opacity: 0, ease: Power3.easeOut }
+  );
 };
 
 const aboutIntroAnimation = () => {

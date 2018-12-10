@@ -28,6 +28,9 @@
     min-width: 300px;
     width: 90%;
   }
+  .navbar {
+    transform: translateX(-35%);
+  }
   .navbar .logo-image {
     width: 160px;
   }
@@ -92,8 +95,14 @@
   .mobileBack {
     display: inline-block;
   }
+  .navbar {
+    transform: none;
+  }
   .navbar.sub-page {
     transform: translateX(-200%);
+  }
+  .home img {
+    display: none;
   }
   .about,
   .collection,

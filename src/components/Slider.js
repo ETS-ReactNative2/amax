@@ -21,15 +21,8 @@ class Slider extends React.Component {
   componentDidMount() {
     this.sliderCycle();
   }
-  //   componentDidUpdate() {
-  //     this.state.loading
-  //       ? console.log("wait")
-  //       : console.log(`${this.state.data[0].content.rendered.split(">,")}>`);
-  //   }
 
   renderSlider = () => {
-    const sliderImages = this.state.data[0].content.rendered.split(",img");
-    let placement = 0;
     let imageArray = [];
     for (
       let i = 0;
@@ -67,12 +60,10 @@ class Slider extends React.Component {
     return style;
   };
   sliderCycle = () => {
-    console.log("hi");
     setTimeout(() => {
       this.state.sliderPos === 2
         ? this.setState({ sliderPos: 0 })
         : this.setState({ sliderPos: this.state.sliderPos + 1 });
-      console.log("looped");
       this.sliderCycle();
     }, 3000);
   };

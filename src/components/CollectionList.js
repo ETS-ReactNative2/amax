@@ -26,7 +26,7 @@ class CollectionList extends React.Component {
       });
   }
 
-  componentDidUpdate({}, prevState) {
+  componentDidUpdate(prevState) {
     if (this.state.loading !== prevState.loading && !this.state.loading) {
       utils.collectionSubIntro(this.collectionRef.current.children);
     }
