@@ -22,7 +22,8 @@ class App extends Component {
       data: []
     },
     contactOpen: false,
-    retailersOpen: false
+    retailersOpen: false,
+    isIE: false
   };
   componentWillMount = () => {
     //string literal => having a variable with a part of a string
@@ -32,6 +33,9 @@ class App extends Component {
           data: data.data
         }
       });
+    });
+    this.setState({
+      isIE: this.checkBroser()
     });
   };
   openContact = () => {
@@ -64,87 +68,117 @@ class App extends Component {
     }
     return false;
   };
+  checkBroser = () => {
+    var isIntEx = /*@cc_on!@*/ false || !!document.documentMode;
+    return isIntEx;
+  };
   render() {
     return (
       <div className="App">
-        <Topbar />
-        <div className="main-container">
-          <Navbar onHome={this.checkOnHome()} />
-          <TransitionGroup appear={true}>
-            <CSSTransition
-              key={this.props.location.key}
-              timeout={500}
-              classNames="fade"
-              onEnter={node =>
-                utils.introPageAnimation(node, this.props.location.pathname)
-              }
-              onExit={node =>
-                utils.outroPageAnimation(node, this.props.location.pathname)
-              }
-            >
-              <Switch location={this.props.location}>
-                <Route
-                  exact
-                  path="/"
-                  // component={Home}
-                  render={() => (
-                    <Home
-                      data={this.state.posts.data.find(obj => {
-                        return obj.categories[0] === 13;
-                      })}
+        {this.state.isIE ? (
+          <React.Fragment>
+            <div>
+              We apologize valued customer, but this website does not support
+              Internet Explorer.
+            </div>
+            <br />
+            <div>
+              We recommend using Google Chrome, Mozilla Firefire or Microsoft
+              Edge instead.
+            </div>
+            <br />
+            <div>
+              Once again we are very sorry and thank you for visiting AMAX
+              Leather!
+            </div>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <Topbar />
+            <div className="main-container">
+              <Navbar onHome={this.checkOnHome()} />
+              <TransitionGroup appear={true}>
+                <CSSTransition
+                  key={this.props.location.key}
+                  timeout={500}
+                  classNames="fade"
+                  onEnter={node =>
+                    utils.introPageAnimation(node, this.props.location.pathname)
+                  }
+                  onExit={node =>
+                    utils.outroPageAnimation(node, this.props.location.pathname)
+                  }
+                >
+                  <Switch location={this.props.location}>
+                    <Route
+                      exact
+                      path="/"
+                      // component={Home}
+                      render={() => (
+                        <Home
+                          data={this.state.posts.data.find(obj => {
+                            return obj.categories[0] === 13;
+                          })}
+                        />
+                      )}
                     />
-                  )}
-                />
-                <Route path="/collection" component={Collection} />
-                <Route
-                  path="/about"
-                  render={() => (
-                    <About
-                      data={this.state.posts.data.find(obj => {
-                        return obj.categories[0] === 2;
-                      })}
+                    <Route path="/collection" component={Collection} />
+                    <Route
+                      path="/about"
+                      render={() => (
+                        <About
+                          data={this.state.posts.data.find(obj => {
+                            return obj.categories[0] === 2;
+                          })}
+                        />
+                      )}
                     />
-                  )}
-                />
-                <Route
-                  path="/craftmanship"
-                  render={() => (
-                    <Craftmanship
-                      data={this.state.posts.data.find(obj => {
-                        return obj.categories[0] === 5;
-                      })}
+                    <Route
+                      path="/craftmanship"
+                      render={() => (
+                        <Craftmanship
+                          data={this.state.posts.data.find(obj => {
+                            return obj.categories[0] === 5;
+                          })}
+                        />
+                      )}
                     />
-                  )}
-                />
-                <Route
-                  path="/resources"
-                  render={() => (
-                    <Resources
-                      data={this.state.posts.data.filter(obj => {
-                        if (
-                          obj.categories[0] === 5 ||
-                          obj.categories[0] === 2
-                        ) {
-                          return false;
-                        }
-                        return true;
-                      })}
+                    <Route
+                      path="/resources"
+                      render={() => (
+                        <Resources
+                          data={this.state.posts.data.filter(obj => {
+                            if (
+                              obj.categories[0] === 5 ||
+                              obj.categories[0] === 2
+                            ) {
+                              return false;
+                            }
+                            return true;
+                          })}
+                        />
+                      )}
                     />
-                  )}
-                />
-              </Switch>
-            </CSSTransition>
-          </TransitionGroup>
-          <Contact
-            open={this.state.contactOpen ? this.state.contactOpen : false}
-            contact={this.openContact}
-          />
-          <Retailers
-            open={this.state.retailersOpen ? this.state.retailersOpen : false}
-            retailers={this.openRetailers}
-          />
-        </div>
-        <Bottombar contact={this.openContact} retailers={this.openRetailers} />
+                  </Switch>
+                </CSSTransition>
+              </TransitionGroup>
+              <Contact
+                open={this.state.contactOpen ? this.state.contactOpen : false}
+                contact={this.openContact}
+              />
+              <Retailers
+                open={
+                  this.state.retailersOpen ? this.state.retailersOpen : false
+                }
+                retailers={this.openRetailers}
+              />
+            </div>
+            <Bottombar
+              contact={this.openContact}
+              retailers={this.openRetailers}
+            />
+          </React.Fragment>
+        )}
       </div>
     );
   }

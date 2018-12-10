@@ -33,7 +33,8 @@
     object-fit: contain;
     object-position: left;
     align-self: center;
-    margin-left: 30%;
+    margin-left: 50%;
+    margin-right: 0;
   }
   .topbar {
     min-width: 300px;
