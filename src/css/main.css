@@ -125,16 +125,18 @@ a.tertiaryButton.selectedlink:hover {
 
 .home {
   height: 100%;
+  width: 100%;
   display: flex;
+  justify-content: flex-end;
 }
 
 .home img {
-  margin-left: 50%;
   height: 300px;
-  width: 100%;
+  width: 60%;
   object-fit: contain;
   object-position: left;
   align-self: center;
+  margin-right: 10%;
 }
 
 .topbar {

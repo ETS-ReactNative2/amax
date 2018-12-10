@@ -20,6 +20,21 @@
     min-width: 300px;
     width: 90%;
   }
+  .home {
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .home img {
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+    object-position: left;
+    align-self: center;
+    margin-left: 30%;
+  }
   .topbar {
     min-width: 300px;
     width: 90%;
