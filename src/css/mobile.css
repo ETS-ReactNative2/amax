@@ -150,7 +150,10 @@
     margin-left: 5%;
   }
   .collectionName p {
-    font-size: 10px;
+    font-size: 12px;
+  }
+  p.dimensions {
+    font-size: 10px !important;
   }
   .line {
     display: none;
