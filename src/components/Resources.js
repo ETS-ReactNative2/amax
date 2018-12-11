@@ -33,19 +33,29 @@ class Resources extends React.Component {
             <NavLink
               to="/resources/leather-care"
               activeClassName="selectedlink"
+              className="tertiaryButton"
             >
               leather care
             </NavLink>
             <NavLink
               to="/resources/furniture-care"
               activeClassName="selectedlink"
+              className="tertiaryButton"
             >
               furniture care
             </NavLink>
-            <NavLink to="/resources/cleaning" activeClassName="selectedlink">
+            <NavLink
+              to="/resources/cleaning"
+              activeClassName="selectedlink"
+              className="tertiaryButton"
+            >
               cleaning
             </NavLink>
-            <NavLink to="/resources/assembly" activeClassName="selectedlink">
+            <NavLink
+              to="/resources/assembly"
+              activeClassName="selectedlink"
+              className="tertiaryButton"
+            >
               assembly
             </NavLink>
           </div>

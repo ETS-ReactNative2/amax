@@ -113,6 +113,25 @@ class Contact extends React.Component {
     }
   };
 
+  renderNum = num => {
+    let oldArr = num.split("");
+    let newArr = [];
+    if (oldArr[0] === "1" && oldArr.length > 10) {
+      newArr.push(oldArr[0]);
+      newArr.push(oldArr.slice(1, 4).join(""));
+      newArr.push(oldArr.slice(4, 7).join(""));
+      newArr.push(oldArr.slice(7, 10).join(""));
+      return newArr.join(" ");
+    } else if (oldArr.length === 10) {
+      newArr.push(oldArr.slice(0, 3).join(""));
+      newArr.push(oldArr.slice(3, 6).join(""));
+      newArr.push(oldArr.slice(6, 9).join(""));
+      return newArr.join(" ");
+    } else {
+      return "Please enter valid phone number";
+    }
+  };
+
   render() {
     return (
       <div
@@ -120,6 +139,7 @@ class Contact extends React.Component {
         id="contactwindow"
       >
         <div className="container">
+          {console.log(this.props)}
           <div className="left">
             <div className="logo" />
             <h2>We're always here to help! Lets chat!</h2>
@@ -128,16 +148,30 @@ class Contact extends React.Component {
           <div className="divLine" />
           <div className="right">
             <p className="title">EMAIL</p>
-            <p>info@amaxleather.com</p>
-            <p>sales@amaxleather.com</p>
+            <p>{this.props.data && this.props.data.acf.primary_email}</p>
+            <p>{this.props.data && this.props.data.acf.secondary_email}</p>
             <p className="title">FAX</p>
-            <p>1 844 526 5659</p>
+            <p>
+              {this.props.data &&
+                this.renderNum(this.props.data.acf.fax_number)}
+            </p>
             <p className="title">PHONE</p>
-            <p>1 909 931 3866 (US)</p>
-            <p>1 604 526 5685 (Canada)</p>
+            <p>
+              {this.props.data &&
+                `${this.renderNum(this.props.data.acf.us_phone_number)} (US)`}
+            </p>
+            <p>
+              {this.props.data &&
+                `${this.renderNum(
+                  this.props.data.acf.canada_phone_number
+                )} (Canada)`}
+            </p>
             <p className="title">ADDRESSES</p>
-            <p>5400 G St. Chino, CA 91710 (US)</p>
-            <p>#288 - 12899 76 Ave, Surrey, BC V3W 1E6 (Canada)</p>
+            <p>{this.props.data && `${this.props.data.acf.us_address} (US)`}</p>
+            <p>
+              {this.props.data &&
+                `${this.props.data.acf.canada_address} (Canada)`}
+            </p>
           </div>
           <div id="close-contact" onClick={this.props.contact} />
         </div>

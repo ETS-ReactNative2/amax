@@ -159,12 +159,25 @@ class App extends Component {
                         />
                       )}
                     />
+                    <Route
+                      path="*"
+                      render={() => (
+                        <Home
+                          data={this.state.posts.data.find(obj => {
+                            return obj.categories[0] === 13;
+                          })}
+                        />
+                      )}
+                    />
                   </Switch>
                 </CSSTransition>
               </TransitionGroup>
               <Contact
                 open={this.state.contactOpen ? this.state.contactOpen : false}
                 contact={this.openContact}
+                data={this.state.posts.data.find(obj => {
+                  return obj.categories[0] === 14;
+                })}
               />
               <Retailers
                 open={

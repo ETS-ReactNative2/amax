@@ -12,7 +12,7 @@ class Bottombar extends React.Component {
         <div className="right">
           <a
             className="botButton"
-            href="https://clients.alexander-kim.com/amax/login"
+            href="http://amaxleather.com/dealers"
             target="_blank"
             rel="noopener noreferrer"
           >

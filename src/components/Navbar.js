@@ -7,7 +7,7 @@ class Navbar extends React.Component {
       <div className={this.props.onHome ? "navbar" : "navbar sub-page"}>
         <NavLink to="">
           <img
-            src={require("../images/logo.png")}
+            src={require("../images/logo-tm.png")}
             className="logo-image"
             alt="logo"
           />
