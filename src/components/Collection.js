@@ -53,7 +53,7 @@ class Collection extends React.Component {
               className="homeTheaters tertiaryButton"
               activeClassName="selectedlink"
             >
-              home theater
+              home theatre
             </NavLink>
           </div>
         </div>
