@@ -31,7 +31,7 @@ class Collection extends React.Component {
               className="sofas tertiaryButton"
               activeClassName="selectedlink"
             >
-              sofas
+              sofa
               {/* <img src={this.randomImage(Sofas)} /> */}
             </NavLink>
             <NavLink
@@ -39,21 +39,21 @@ class Collection extends React.Component {
               className="recliners tertiaryButton"
               activeClassName="selectedlink"
             >
-              recliners
+              recliner
             </NavLink>
             <NavLink
               to="/collection/sectionals"
               className="sectionals tertiaryButton"
               activeClassName="selectedlink"
             >
-              sectionals
+              sectional
             </NavLink>
             <NavLink
               to="/collection/home-theaters"
               className="homeTheaters tertiaryButton"
               activeClassName="selectedlink"
             >
-              home theaters
+              home theater
             </NavLink>
           </div>
         </div>
