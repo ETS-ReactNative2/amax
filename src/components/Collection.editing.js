@@ -1,5 +1,6 @@
 import React from "react";
 import * as utils from "../utils/animations";
+import axios from "axios";
 import { Switch, Route } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { NavLink } from "react-router-dom";
@@ -7,12 +8,47 @@ import CollectionList from "./CollectionList";
 import "../css/collection.css";
 import "../css/main.css";
 
+const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class Collection extends React.Component {
+  state = {
+    data: [],
+    loading: true,
+    links: []
+  };
+
   onExit = node => {
     if (node) {
       utils.collectionSubOutro(node);
     }
   };
+  componentWillMount(){
+    axios
+      .get(
+        `${apibase}/collection?per_page=100`
+      )
+      .then(data => {
+          this.setState({
+            data: data.data,
+            loading: false
+          });
+      });
+  }
+  componentDidMount(){
+    this.getCategories();
+  }
+
+  getCategories(){
+    var categories = [];
+    for(var i = 0; i < this.state.data.length; i++){
+      if(!categories.includes(this.state.data[i].acf.type_of_item)){
+        categories.push(this.state.data[i].acf.type_of_item);
+      }
+    }
+    this.setState({
+      links: categories
+    })
+    console.log(categories);
+  }
 
   render() {
     return (
@@ -26,13 +62,12 @@ class Collection extends React.Component {
           </div>
           <div className="line" />
           <div className="linkList">
-            <NavLink
+            {/* <NavLink
               to="/collection/sofas"
               className="sofas tertiaryButton"
               activeClassName="selectedlink"
             >
               sofa
-              {/* <img src={this.randomImage(Sofas)} /> */}
             </NavLink>
             <NavLink
               to="/collection/recliners"
@@ -48,6 +83,14 @@ class Collection extends React.Component {
             >
               sectional
             </NavLink>
+            <NavLink
+              to="/collection/home-theaters"
+              className="homeTheaters tertiaryButton"
+              activeClassName="selectedlink"
+            >
+              home theatre
+            </NavLink> */}
+            {console.log(this.state.links)}
             <NavLink
               to="/collection/home-theaters"
               className="homeTheaters tertiaryButton"
