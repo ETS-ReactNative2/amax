@@ -180,3 +180,4 @@ export const resourcesSubOutro = node => {
     { opacity: 0, ease: Power3.easeOut }
   );
 };
+

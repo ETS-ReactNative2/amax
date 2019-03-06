@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import * as utils from "../utils/animations";
 import { runInThisContext } from "vm";
+import Lightbox from "./LightBox";
 
 const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class CollectionList extends React.Component {
@@ -29,52 +30,49 @@ class CollectionList extends React.Component {
       });
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.loading !== prevState.loading && !this.state.loading) {
+      // console.log('updating...', )
       utils.collectionSubIntro(this.collectionRef.current.children);
     }
   }
 
-  showLightbox =() => {
-    if(!this.state.lightbox) { 
-        this.setState({
-          lightbox: true
-        })
+  showLightbox = () => {
+    if (!this.state.lightbox) {
+      this.setState({
+        lightbox: true
+      });
     } else {
       this.setState({
         lightbox: false
-      })
+      });
     }
-    }
+  };
 
-    changeLightBox = (imagesrc) => {
-      this.setState({lightbox: true, lightboximg: imagesrc});
-    }
+  changeLightBox = imagesrc => {
+    this.setState({ lightbox: true, lightboximg: imagesrc });
+  };
 
   render() {
     return (
-      
       <div ref={this.collectionRef} className="collectionList">
-      {this.state.lightbox ? (
-          <div id="lightbox"  onClick={this.showLightbox} >
-            <div className="cover">
-                <div className="img">
-                  <img className="lightimg"
-                      src={this.state.lightboximg}
-                      alt="Image"
-                    />
-                    <p>*click anywhere to close</p>
-                </div>
-              </div>
-            </div>
-        ) : <div/>}
-      
-      {console.log(this.state)}
+        {this.state.lightbox && (
+          <Lightbox
+            image={this.state.lightboximg}
+            onClick={this.showLightbox}
+          />
+        )}
+
         {!this.state.loading ? (
           this.state.data.map(item => (
             <div key={item.id} style={{ opacity: 0 }}>
               <p />
-              <div className="collectionNode" onClick={()=>{this.changeLightBox(item.acf.image.sizes.large)}}>
+              <div
+                className="collectionNode"
+                onClick={() => {
+                  this.changeLightBox(item.acf.image.sizes.large);
+                }}
+              >
                 <div className="collectionName">
                   <p>{item.title.rendered}</p>
                   <p className="dimensions">{item.acf.dimensions}</p>
