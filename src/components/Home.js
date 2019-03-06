@@ -10,7 +10,6 @@ class Home extends React.Component {
             this.props.data && this.props.data.acf.home_page_image.sizes.large
           }
         />
-        {console.log(this.props)}
       </div>
     );
   }

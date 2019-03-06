@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import * as utils from "../utils/animations";
-import { runInThisContext } from "vm";
 import Lightbox from "./LightBox";
 
 const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";

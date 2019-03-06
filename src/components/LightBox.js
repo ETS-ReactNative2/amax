@@ -21,7 +21,7 @@ class Lightbox extends React.Component {
               className="lightimg"
               // style={{opacity:0}}
               src={this.props.image}
-              alt="Image"
+              alt="Lightbox"
             />
             {/* <p>*click anywhere to close</p> */}
           </div>

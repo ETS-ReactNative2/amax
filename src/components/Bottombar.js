@@ -16,11 +16,10 @@ class Bottombar extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            login{" "}
-          </a>{" "}
+            login
+          </a>
           <span className="linespan">|</span>
           <div className="botButton" onClick={this.props.retailers}>
-            {" "}
             retailers
           </div>
         </div>

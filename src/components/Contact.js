@@ -139,7 +139,6 @@ class Contact extends React.Component {
         id="contactwindow"
       >
         <div className="container">
-          {console.log(this.props)}
           <div className="left">
             <div className="logo" />
             <h2>We're always here to help! Lets chat!</h2>
