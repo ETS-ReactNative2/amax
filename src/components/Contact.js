@@ -12,7 +12,7 @@ class Contact extends React.Component {
     sendState: 0
   };
   componentDidMount() {
-    emailjs.init("user_LW4F13TkKWmYYIdeq1mpg");
+    emailjs.init("user_P8ZXcuklMOiTuvBMjPGQ5");
   }
   handleTextChange = event => {
     this.setState({
@@ -26,7 +26,7 @@ class Contact extends React.Component {
     });
     const template = this.state;
 
-    emailjs.send("gmail", "contact", template).then(response => {
+    emailjs.send("gmail", "contact_form", template).then(response => {
       // console.log(response);
       this.setState({ sendState: 2 });
     });
