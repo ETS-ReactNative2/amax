@@ -6,8 +6,12 @@ class Bottombar extends React.Component {
   render() {
     return (
       <div className="bottombar">
-        <div className="botButton" onClick={this.props.contact}>
-          contact
+        <div className="leftbot">
+          <div className="botButton" onClick={this.props.contact}>
+            <p>contact</p>
+          </div>
+
+          <p id="copyright"> | Copyright © AMAX Leather Inc.</p>
         </div>
         <div className="right">
           <a

@@ -198,11 +198,26 @@ a.selectedlink {
   min-width: 950px;
   margin-top: 15px;
 }
+.bottombar .leftbot {
+  display: flex;
+  margin-top: 0;
+}
+.bottombar .leftbot p {
+  margin: 0;
+}
+.bottombar .leftbot #copyright {
+  font-size: 14px;
+  transition: 0.2s;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  opacity: 0.7;
+}
 .bottombar .right {
   display: flex;
 }
 .bottombar .botButton {
-  margin-top: 0;
+  margin: 0;
   font-size: 14px;
   transition: 0.2s;
   font-weight: 600;

@@ -209,4 +209,7 @@
   #retailerswindow .container #location .list {
     padding-left: 0;
   }
+  .bottombar .leftbot #copyright {
+    display: none;
+  }
 }
