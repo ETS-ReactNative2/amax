@@ -78,7 +78,7 @@ class Collection extends React.Component {
                 render={() => <CollectionList dataId={11} id="Sectionals" />}
               />
               <Route
-                path="/collection/home-theaters"
+                path="/collection/other"
                 render={() => <CollectionList dataId={15} id="Other" />}
               />
             </Switch>
