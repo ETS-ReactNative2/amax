@@ -49,11 +49,11 @@ class Collection extends React.Component {
               sectional
             </NavLink>
             <NavLink
-              to="/collection/home-theaters"
-              className="homeTheaters tertiaryButton"
+              to="/collection/other"
+              className="other tertiaryButton"
               activeClassName="selectedlink"
             >
-              home theatre
+              other
             </NavLink>
           </div>
         </div>
@@ -79,7 +79,7 @@ class Collection extends React.Component {
               />
               <Route
                 path="/collection/home-theaters"
-                render={() => <CollectionList dataId={12} id="Home Theaters" />}
+                render={() => <CollectionList dataId={15} id="Other" />}
               />
             </Switch>
           </CSSTransition>
