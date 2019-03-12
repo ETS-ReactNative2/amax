@@ -54,10 +54,10 @@
     font-size: 12px;
     letter-spacing: 0.3px;
   }
-  #collection .collectionList {
+  /* #collection .collectionList {
     top: 20%;
     margin-bottom: 100px;
-  }
+  } */
   .navbar {
     width: 50%;
   }
@@ -211,6 +211,9 @@
     padding-left: 0;
   }
   .bottombar .leftbot #copyright {
+    display: none;
+  }
+  .bottombar .leftbot .linespan {
     display: none;
   }
 }
