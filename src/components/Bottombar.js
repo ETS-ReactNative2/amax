@@ -7,13 +7,9 @@ class Bottombar extends React.Component {
     return (
       <div className="bottombar">
         <div className="leftbot">
-          <div className="botButton" onClick={this.props.contact}>
+          {/* <div className="botButton" onClick={this.props.contact}>
             <p>contact </p>
-          </div>
-          <span className="linespan">|</span>
-          <p id="copyright"> Copyright © AMAX Leather Inc.</p>
-        </div>
-        <div className="right">
+          </div> */}
           <a
             className="botButton"
             href="http://amaxleather.com/dealers"
@@ -22,6 +18,21 @@ class Bottombar extends React.Component {
           >
             login
           </a>
+          <span className="linespan">|</span>
+          <p id="copyright"> Copyright © AMAX Leather Inc.</p>
+        </div>
+        <div className="right">
+          {/* <a
+            className="botButton"
+            href="http://amaxleather.com/dealers"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            login
+          </a> */}
+          <div className="botButton" onClick={this.props.contact}>
+            contact
+          </div>
           <span className="linespan">|</span>
           <div className="botButton" onClick={this.props.retailers}>
             retailers

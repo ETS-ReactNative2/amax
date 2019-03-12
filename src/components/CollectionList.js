@@ -31,17 +31,7 @@ class CollectionList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.loading !== prevState.loading && !this.state.loading) {
-      // console.log('updating...', )
       utils.collectionSubIntro(this.collectionRef.current.children);
-      if (typeof InstallTrigger !== "undefined") {
-        let element = document.querySelector(".collectionNode");
-        let width = element.offsetWidth;
-        const ele = document.getElementsByClassName("collectionNode");
-        for (let i = 0; i < ele.length; i++) {
-          ele[i].style.height = `${width}px`;
-        }
-        console.log(width);
-      }
     }
   }
 
@@ -70,7 +60,6 @@ class CollectionList extends React.Component {
             onClick={this.showLightbox}
           />
         )}
-
         {!this.state.loading ? (
           this.state.data.map(item => (
             <div key={item.id} style={{ opacity: 0 }}>

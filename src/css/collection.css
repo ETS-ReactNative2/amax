@@ -42,15 +42,16 @@
 }
 
 @-moz-document url-prefix() {
-  .image {
+  /* .image {
     align-items: center;
     display: flex;
-  }
+  } */
 }
 
 .image {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .collectionName {
