@@ -78,12 +78,22 @@ class App extends Component {
         {this.state.isIE ? (
           <React.Fragment>
             <div>
+              <img
+                src={require("../src/images/logo-tm.png")}
+                className="logo-image"
+                alt="logo"
+                width="200px"
+              />
+            </div>
+            <br />
+            <br />
+            <div>
               We apologize valued customer, but this website does not support
               Internet Explorer.
             </div>
             <br />
             <div>
-              We recommend using Google Chrome, Mozilla Firefire or Microsoft
+              We recommend using Google Chrome, Mozilla Firefire, or Microsoft
               Edge instead.
             </div>
             <br />

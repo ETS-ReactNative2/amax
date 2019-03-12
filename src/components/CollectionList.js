@@ -33,6 +33,15 @@ class CollectionList extends React.Component {
     if (this.state.loading !== prevState.loading && !this.state.loading) {
       // console.log('updating...', )
       utils.collectionSubIntro(this.collectionRef.current.children);
+      if (typeof InstallTrigger !== "undefined") {
+        let element = document.querySelector(".collectionNode");
+        let width = element.offsetWidth;
+        const ele = document.getElementsByClassName("collectionNode");
+        for (let i = 0; i < ele.length; i++) {
+          ele[i].style.height = `${width}px`;
+        }
+        console.log(width);
+      }
     }
   }
 
