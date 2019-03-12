@@ -8,10 +8,10 @@ class Bottombar extends React.Component {
       <div className="bottombar">
         <div className="leftbot">
           <div className="botButton" onClick={this.props.contact}>
-            <p>contact</p>
+            <p>contact </p>
           </div>
-
-          <p id="copyright"> | Copyright © AMAX Leather Inc.</p>
+          <span className="linespan">|</span>
+          <p id="copyright"> Copyright © AMAX Leather Inc.</p>
         </div>
         <div className="right">
           <a
