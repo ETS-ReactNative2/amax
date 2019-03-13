@@ -62,7 +62,7 @@ class CollectionList extends React.Component {
         )}
         {!this.state.loading ? (
           this.state.data.map(item => (
-            <div className="node" key={item.id} style={{ opacity: 0 }}>
+            <div key={item.id} style={{ opacity: 0 }}>
               <p />
               <div
                 className="collectionNode"
