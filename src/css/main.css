@@ -63,6 +63,7 @@ body {
   justify-content: center;
   height: 100%;
   transform: translateX(-150%);
+  z-index: 30;
 }
 
 .navbar .navitem {
