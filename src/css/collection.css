@@ -140,6 +140,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  -webkit-backface-visibility: hidden;
 }
 #lightbox .cover .img {
   display: flex;
