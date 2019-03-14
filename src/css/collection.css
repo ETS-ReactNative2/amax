@@ -126,14 +126,17 @@
 
 /*LightBox Styling*/
 
-#lightbox .cover {
+#lightbox {
   position: fixed;
-  z-index: 9999;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+}
+
+#lightbox .cover {
   background-color: rgba(255, 255, 255, 0.9);
   height: 100vh;
   width: 100vw;
-  top: 0;
-  left: 0;
 }
 #lightbox .cover .img {
   display: flex;
