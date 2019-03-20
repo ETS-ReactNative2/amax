@@ -120,12 +120,12 @@ class Contact extends React.Component {
       newArr.push(oldArr[0]);
       newArr.push(oldArr.slice(1, 4).join(""));
       newArr.push(oldArr.slice(4, 7).join(""));
-      newArr.push(oldArr.slice(7, 10).join(""));
+      newArr.push(oldArr.slice(7, oldArr.length).join(""));
       return newArr.join(" ");
     } else if (oldArr.length === 10) {
       newArr.push(oldArr.slice(0, 3).join(""));
       newArr.push(oldArr.slice(3, 6).join(""));
-      newArr.push(oldArr.slice(6, 9).join(""));
+      newArr.push(oldArr.slice(6, oldArr.length).join(""));
       return newArr.join(" ");
     } else {
       return "Please enter valid phone number";
