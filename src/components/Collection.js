@@ -1,18 +1,18 @@
-import React from "react";
-import * as utils from "../utils/animations";
-import { Switch, Route } from "react-router-dom";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { NavLink } from "react-router-dom";
-import CollectionList from "./CollectionList";
-import "../css/collection.css";
-import "../css/main.css";
+import React from 'react'
+import * as utils from '../utils/animations'
+import { Switch, Route } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { NavLink } from 'react-router-dom'
+import CollectionList from './CollectionList'
+import '../css/collection.css'
+import '../css/main.css'
 
 class Collection extends React.Component {
   onExit = node => {
     if (node) {
-      utils.collectionSubOutro(node);
+      utils.collectionSubOutro(node)
     }
-  };
+  }
 
   render() {
     return (
@@ -22,7 +22,7 @@ class Collection extends React.Component {
             <div className="sub-nav">
               <div className="headers title">
                 <NavLink className="mobileBack" to="">
-                  {""}
+                  {''}
                 </NavLink>
                 Collection
               </div>
@@ -70,27 +70,51 @@ class Collection extends React.Component {
               <Switch>
                 <Route
                   path="/collection/sofas"
-                  render={() => <CollectionList dataId={8} id="Sofas" />}
+                  render={() => (
+                    <CollectionList
+                      toggleLightBox={this.props.toggleLightBox}
+                      dataId={8}
+                      id="Sofas"
+                    />
+                  )}
                 />
                 <Route
                   path="/collection/recliners"
-                  render={() => <CollectionList dataId={10} id="Recliners" />}
+                  render={() => (
+                    <CollectionList
+                      toggleLightBox={this.props.toggleLightBox}
+                      dataId={10}
+                      id="Recliners"
+                    />
+                  )}
                 />
                 <Route
                   path="/collection/sectionals"
-                  render={() => <CollectionList dataId={11} id="Sectionals" />}
+                  render={() => (
+                    <CollectionList
+                      toggleLightBox={this.props.toggleLightBox}
+                      dataId={11}
+                      id="Sectionals"
+                    />
+                  )}
                 />
                 <Route
                   path="/collection/home-theatre"
-                  render={() => <CollectionList dataId={16} id="Hometheatre" />}
+                  render={() => (
+                    <CollectionList
+                      toggleLightBox={this.props.toggleLightBox}
+                      dataId={16}
+                      id="Hometheatre"
+                    />
+                  )}
                 />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Collection;
+export default Collection

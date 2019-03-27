@@ -1,18 +1,18 @@
-import React from "react";
-import axios from "axios";
-import * as utils from "../utils/animations";
-import Lightbox from "./LightBox";
+import React from 'react'
+import axios from 'axios'
+import * as utils from '../utils/animations'
+import Lightbox from './LightBox'
 
-const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
+const apibase = 'https://clients.alexander-kim.com/amax/wp-json/wp/v2'
 class CollectionList extends React.Component {
   state = {
     data: [],
     loading: true,
     lightbox: false,
     lightboximg: null
-  };
+  }
 
-  collectionRef = React.createRef();
+  collectionRef = React.createRef()
 
   componentWillMount() {
     axios
@@ -24,32 +24,34 @@ class CollectionList extends React.Component {
           this.setState({
             data: data.data,
             loading: false
-          });
-        }, 200);
-      });
+          })
+        }, 200)
+      })
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.loading !== prevState.loading && !this.state.loading) {
-      utils.collectionSubIntro(this.collectionRef.current.children);
+      utils.collectionSubIntro(this.collectionRef.current.children)
     }
   }
 
   showLightbox = () => {
+    this.props.toggleLightBox()
     if (!this.state.lightbox) {
       this.setState({
         lightbox: true
-      });
+      })
     } else {
       this.setState({
         lightbox: false
-      });
+      })
     }
-  };
+  }
 
   changeLightBox = imagesrc => {
-    this.setState({ lightbox: true, lightboximg: imagesrc });
-  };
+    this.props.toggleLightBox()
+    this.setState({ lightbox: true, lightboximg: imagesrc })
+  }
 
   render() {
     return (
@@ -67,7 +69,7 @@ class CollectionList extends React.Component {
               <div
                 className="collectionNode"
                 onClick={() => {
-                  this.changeLightBox(item.acf.image.sizes.large);
+                  this.changeLightBox(item.acf.image.sizes.large)
                 }}
               >
                 <div className="collectionName">
@@ -80,7 +82,7 @@ class CollectionList extends React.Component {
                       src={item.acf.image.sizes.large}
                       alt={item.title.rendered}
                       className={
-                        item.acf.type_of_item === "Recliner" ? "recliner" : ""
+                        item.acf.type_of_item === 'Recliner' ? 'recliner' : ''
                       }
                     />
                   </div>
@@ -92,8 +94,8 @@ class CollectionList extends React.Component {
           <div className="preloader" />
         )}
       </div>
-    );
+    )
   }
 }
 
-export default CollectionList;
+export default CollectionList
