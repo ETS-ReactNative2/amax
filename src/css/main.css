@@ -48,6 +48,10 @@ body {
   overflow: hidden;
 }
 
+.main-container.not-relative {
+  position: static;
+}
+
 .navbar.sub-page {
   transform: translateX(-150%);
 }
