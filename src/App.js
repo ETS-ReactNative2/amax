@@ -1,21 +1,22 @@
-import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import About from './components/About'
-import Collection from './components/Collection'
-import Resources from './components/Resources'
-import Craftmanship from './components/Craftmanship'
-import Home from './components/Home'
-import Topbar from './components/Topbar'
-import Contact from './components/Contact'
-import './css/main.css'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import * as utils from './utils/animations'
-import Bottombar from './components/Bottombar'
-import axios from 'axios'
-import Retailers from './components/retailers/Retailers'
+import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Collection from "./components/Collection";
+import Resources from "./components/Resources";
+import Craftmanship from "./components/Craftmanship";
+import Home from "./components/Home";
+import Topbar from "./components/Topbar";
+import Contact from "./components/Contact";
+import "./css/main.css";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import * as utils from "./utils/animations";
+import Bottombar from "./components/Bottombar";
+import axios from "axios";
+import Retailers from "./components/retailers/Retailers";
+import Lightbox from "./components/LightBox";
 
-const apibase = 'https://clients.alexander-kim.com/amax/wp-json/wp/v2'
+const apibase = "https://clients.alexander-kim.com/amax/wp-json/wp/v2";
 class App extends Component {
   state = {
     posts: {
@@ -24,8 +25,10 @@ class App extends Component {
     contactOpen: false,
     retailersOpen: false,
     isIE: false,
-    lightBoxClicked: false
-  }
+    lightBoxClicked: false,
+    lightbox: false,
+    lightboximg: null
+  };
   componentWillMount = () => {
     //string literal => having a variable with a part of a string
     axios.get(`${apibase}/posts`).then(data => {
@@ -33,49 +36,67 @@ class App extends Component {
         posts: {
           data: data.data
         }
-      })
-    })
+      });
+    });
     this.setState({
       isIE: this.checkBroser()
-    })
-  }
+    });
+  };
   openContact = () => {
     if (this.state.contactOpen === false) {
       this.setState({
         contactOpen: true,
         retailersOpen: false
-      })
+      });
     } else {
       this.setState({
         contactOpen: false
-      })
+      });
     }
-  }
+  };
   openRetailers = () => {
     if (this.state.retailersOpen === false) {
       this.setState({
         retailersOpen: true,
         contactOpen: false
-      })
+      });
     } else {
       this.setState({
         retailersOpen: false
-      })
+      });
     }
-  }
+  };
   checkOnHome = () => {
-    if (this.props.location.pathname === '/') {
-      return true
+    if (this.props.location.pathname === "/") {
+      return true;
     }
-    return false
-  }
+    return false;
+  };
   checkBroser = () => {
-    var isIntEx = /*@cc_on!@*/ false || !!document.documentMode
-    return isIntEx
-  }
+    var isIntEx = /*@cc_on!@*/ false || !!document.documentMode;
+    return isIntEx;
+  };
   toggleLightBox = () => {
-    this.setState({ lightBoxClicked: !this.state.lightBoxClicked })
-  }
+    this.setState({ lightBoxClicked: !this.state.lightBoxClicked });
+  };
+  showLightbox = () => {
+    this.toggleLightBox();
+    if (!this.state.lightbox) {
+      this.setState({
+        lightbox: true
+      });
+    } else {
+      this.setState({
+        lightbox: false
+      });
+    }
+  };
+
+  changeLightBox = imagesrc => {
+    this.toggleLightBox();
+    this.setState({ lightbox: true, lightboximg: imagesrc });
+  };
+
   render() {
     return (
       <div className="App">
@@ -83,7 +104,7 @@ class App extends Component {
           <React.Fragment>
             <div>
               <img
-                src={require('../src/images/logo-tm.png')}
+                src={require("../src/images/logo-tm.png")}
                 className="logo-image"
                 alt="logo"
                 width="200px"
@@ -109,13 +130,13 @@ class App extends Component {
         ) : (
           <React.Fragment>
             <Topbar />
-            <div
-              className={
-                this.state.lightBoxClicked
-                  ? 'main-container not-relative'
-                  : 'main-container'
-              }
-            >
+            <div className="main-container">
+              {this.state.lightbox && (
+                <Lightbox
+                  image={this.state.lightboximg}
+                  onClick={this.showLightbox}
+                />
+              )}
               <Navbar onHome={this.checkOnHome()} />
               <TransitionGroup appear={true}>
                 <CSSTransition
@@ -137,7 +158,7 @@ class App extends Component {
                       render={() => (
                         <Home
                           data={this.state.posts.data.find(obj => {
-                            return obj.categories[0] === 13
+                            return obj.categories[0] === 13;
                           })}
                         />
                       )}
@@ -148,6 +169,10 @@ class App extends Component {
                         <Collection
                           toggleLightBox={this.toggleLightBox}
                           {...props}
+                          showLightbox={this.showLightbox}
+                          changeLightBox={this.changeLightBox}
+                          lightbox={this.state.lightbox}
+                          lightboximg={this.state.lightboximg}
                         />
                       )}
                     />
@@ -156,7 +181,7 @@ class App extends Component {
                       render={() => (
                         <About
                           data={this.state.posts.data.find(obj => {
-                            return obj.categories[0] === 2
+                            return obj.categories[0] === 2;
                           })}
                         />
                       )}
@@ -166,7 +191,7 @@ class App extends Component {
                       render={() => (
                         <Craftmanship
                           data={this.state.posts.data.find(obj => {
-                            return obj.categories[0] === 5
+                            return obj.categories[0] === 5;
                           })}
                         />
                       )}
@@ -180,9 +205,9 @@ class App extends Component {
                               obj.categories[0] === 5 ||
                               obj.categories[0] === 2
                             ) {
-                              return false
+                              return false;
                             }
-                            return true
+                            return true;
                           })}
                         />
                       )}
@@ -192,7 +217,7 @@ class App extends Component {
                       render={() => (
                         <Home
                           data={this.state.posts.data.find(obj => {
-                            return obj.categories[0] === 13
+                            return obj.categories[0] === 13;
                           })}
                         />
                       )}
@@ -204,7 +229,7 @@ class App extends Component {
                 open={this.state.contactOpen ? this.state.contactOpen : false}
                 contact={this.openContact}
                 data={this.state.posts.data.find(obj => {
-                  return obj.categories[0] === 14
+                  return obj.categories[0] === 14;
                 })}
               />
               <Retailers
@@ -221,8 +246,8 @@ class App extends Component {
           </React.Fragment>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

@@ -1,18 +1,18 @@
-import React from 'react'
-import * as utils from '../utils/animations'
-import { Switch, Route } from 'react-router-dom'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { NavLink } from 'react-router-dom'
-import CollectionList from './CollectionList'
-import '../css/collection.css'
-import '../css/main.css'
+import React from "react";
+import * as utils from "../utils/animations";
+import { Switch, Route } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { NavLink } from "react-router-dom";
+import CollectionList from "./CollectionList";
+import "../css/collection.css";
+import "../css/main.css";
 
 class Collection extends React.Component {
   onExit = node => {
     if (node) {
-      utils.collectionSubOutro(node)
+      utils.collectionSubOutro(node);
     }
-  }
+  };
 
   render() {
     return (
@@ -22,7 +22,7 @@ class Collection extends React.Component {
             <div className="sub-nav">
               <div className="headers title">
                 <NavLink className="mobileBack" to="">
-                  {''}
+                  {""}
                 </NavLink>
                 Collection
               </div>
@@ -75,6 +75,10 @@ class Collection extends React.Component {
                       toggleLightBox={this.props.toggleLightBox}
                       dataId={8}
                       id="Sofas"
+                      showLightbox={this.props.showLightbox}
+                      changeLightBox={this.props.changeLightBox}
+                      lightbox={this.props.lightbox}
+                      lightboximg={this.props.lightboximg}
                     />
                   )}
                 />
@@ -85,6 +89,10 @@ class Collection extends React.Component {
                       toggleLightBox={this.props.toggleLightBox}
                       dataId={10}
                       id="Recliners"
+                      showLightbox={this.props.showLightbox}
+                      changeLightBox={this.props.changeLightBox}
+                      lightbox={this.props.lightbox}
+                      lightboximg={this.props.lightboximg}
                     />
                   )}
                 />
@@ -95,6 +103,10 @@ class Collection extends React.Component {
                       toggleLightBox={this.props.toggleLightBox}
                       dataId={11}
                       id="Sectionals"
+                      showLightbox={this.props.showLightbox}
+                      changeLightBox={this.props.changeLightBox}
+                      lightbox={this.props.lightbox}
+                      lightboximg={this.props.lightboximg}
                     />
                   )}
                 />
@@ -105,6 +117,10 @@ class Collection extends React.Component {
                       toggleLightBox={this.props.toggleLightBox}
                       dataId={16}
                       id="Hometheatre"
+                      showLightbox={this.props.showLightbox}
+                      changeLightBox={this.props.changeLightBox}
+                      lightbox={this.props.lightbox}
+                      lightboximg={this.props.lightboximg}
                     />
                   )}
                 />
@@ -113,8 +129,8 @@ class Collection extends React.Component {
           </TransitionGroup>
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 
-export default Collection
+export default Collection;
