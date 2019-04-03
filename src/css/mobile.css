@@ -56,13 +56,13 @@
     width: 90%;
   }
   .navbar {
-    transform: translateX(-35%);
+    transform: translateX(-100%);
   }
   .navbar .logo-image {
     width: 160px;
   }
   .navbar.sub-page {
-    transform: translateX(-35%);
+    transform: translateX(-100%);
   }
   .linkList a {
     font-size: 12px;
@@ -73,7 +73,7 @@
     margin-bottom: 100px;
   } */
   .navbar {
-    width: 50%;
+    width: 30%;
   }
 
   #contactwindow {
@@ -215,6 +215,7 @@
   }
   .navbar {
     transform: none;
+    width: 50%;
   }
   .navbar.sub-page {
     transform: translateX(-200%);
